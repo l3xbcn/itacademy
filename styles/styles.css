@@ -1,0 +1,188 @@
+/* Reset de márgenes internos y externos para todos los elementos y para el cálculo de los tamaños se computarán ambos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cuerpo */
+body {
+    width: 1000px;
+    margin: 20px auto;
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+}
+
+/* Enlaces */
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+/* Iconos de redes sociales */
+header div#buttons div:hover {
+    background-color: #2E1435;
+    color: white;
+}
+
+nav div a {
+    color: white;
+}
+
+nav div:hover, section#cards div a:hover, section#main article a:hover {
+    background-color: #2E1435;
+}
+
+
+/* Cabecera */
+header {
+    width: 100%;
+    height: 120px;
+    border: 1px solid gray;
+    background: repeating-radial-gradient(circle, transparent, transparent 10.5px, #e5e5f7 10.5px, #e5e5f7 13.5px), repeating-radial-gradient(circle, transparent, transparent 10.5px, #e5e5f7 10.5px, #e5e5f7 13.5px), rgba(255, 255, 255, 0);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px, 60px 30px;
+}
+
+/* Logotipo de la cabecera */
+header div#logo {
+    opacity: .7;
+    float: left;
+    margin-left: 30px;
+    margin-top: 30px;
+    width: 200px;
+    height: 60px;
+    /* background-color: gainsboro; */
+    background-image: url(../images/logo.svg);
+    background-repeat: no-repeat;
+    border-radius: 8px;
+}
+
+/* Área para los iconos de redes sociales de la cabecera */
+header div#buttons {
+    float: right;
+    margin-right: 19px;
+    margin-top: 39px;
+    height: 41px;
+    width: 141px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 9px;    
+}
+
+/* Círculos contenedores de cada icono de red social de la cabecera */
+header div#buttons div {
+    border: 0px;
+    border-radius: 19px;
+    box-shadow: none;
+    background-color: gainsboro;
+}
+
+/* Iconos de red social de la cabecera */
+header div#buttons div i {
+    position: relative;
+    font-size: 24px;
+    top: 8px;
+    left: 8px;
+}
+
+/* Navegación */
+nav {
+    margin-top: 21px;
+    height: 48px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 9px;    
+    background-color:white;
+}
+
+nav div {
+    background-color: black;
+    /* Para centrar tanto horizontal como verticalmente */
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+/* Destacados en 3 columnas idénticas */
+/* 329x191px */
+section#cards {
+    margin-top: 25px;
+    height: 191px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 9px;
+}
+
+section#cards div {
+    text-align: center;
+}
+
+section#cards div h3 {
+    margin-top: -140px;
+    color: white;
+    text-shadow: 2px 2px black;
+    font-size: 24px;
+}
+
+section#cards div a, section#main article a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    padding: 8px;
+    background-color: black;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px black;
+    font-size: 20px;
+}
+
+/* Columna del destacado */
+section#cards div {
+    background-color:gainsboro;
+}
+
+/* Artículo principal con 3 columnas */
+section#main {
+    /* height: 191px; */
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 200px auto 200px;
+    gap: 12px;
+}
+
+section#main img {
+    width: 576px;
+}
+
+section#main article {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+
+section#main article h2 {
+    border-bottom: 1px solid black;
+    margin-bottom: 12px;
+}
+
+/* Contenidos al margen del artículo principal - a la derecha y a la izquierda */
+section#main div:first-child, section#main div:last-child {
+    background-color:gainsboro;
+}
+
+/* Pie */
+footer {
+    height: 70px;
+    margin-top: 24px;
+    background-color: #2E1435;
+    color: #fff;
+    text-align: center;
+
+}
+
+footer a {
+    color: white;
+    text-decoration: underline;
+}
