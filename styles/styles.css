@@ -49,8 +49,7 @@ body {
 }
 
 /* Vuelve completamente transparente el plano blanco al pasar el ratón por encima */
-/* NOTA: Solo funciona sobre el plano transparente, pero no sobre el resto de la tira o sobre las letras */
-.plano:hover {
+.tira:hover .plano {
     opacity: 0;
 }
 
