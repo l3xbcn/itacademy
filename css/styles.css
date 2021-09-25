@@ -90,17 +90,12 @@ a#registro {
   width: 240px;
   margin: 0px auto; /* centrada */
   background-color: rgba(var(--bs-dark-rgb), .75) !important; /* descripción del artículo del slide con transparencia */
+  color: white;
 }
 
 .portfolio .leyenda {
   position:absolute;
-  color: white;
   margin-top: -160px;
-  text-align: left;
-  padding: 12px;
-  width: 240px;
-  background-color: rgba(var(--bs-dark-rgb), .75) !important; /* descripción del artículo del slide con transparencia */
-  z-index: 2;
 }
 
 /*! Título en la leyenda */
