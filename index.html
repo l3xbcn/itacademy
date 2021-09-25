@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Metro Book</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="images/logo.svg" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Bootstrap core JS - CDN 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        -->
+        <!-- Bootstrap CSS - hospedado - se desactiva mediante este comentario -->
+        <link href="libs/bootstrap.min.css" rel="stylesheet" />
+        <!-- CSS personalizado -->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <header class="fixed-top">
+            
+        <!-- Navegación -->
+            <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+                <div class="container">
+                    <!-- Logotipo -->
+                    <a class="navbar-brand" href="#"><img src="images/logo.svg" alt="imagen 1" alt="logo"></a>
+                    <!-- Opciones del menú ocultables en la versión hamburguesa -->
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link rounded" href="#novedades">Novedades</a></li>
+                            <li class="nav-item"><a class="nav-link rounded" href="#about">Sobre</a></li>
+                        </ul>
+                    </div>
+                    <!-- Opciones del menú siempre visibles -->
+                    <a href="#" class="btn btn-primary text-white fw-bold nav-link mx-2" role="button" data-bs-toggle="modal" data-bs-target="#modal-login" id="login">Login</a>
+                    <a href="#" class="btn btn-primary text-white fw-bold nav-link" data-bs-toggle="modal" data-bs-target="#modal-registro" id="registro">Registro</a>
+                    </div>
+                    <!-- Botón de menú para la versión hamburguesa - muestra las opciones ocultables -->
+                    <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded position-absolute top-0 end-0 mx-2 my-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+        </nav>
+            <div class="mx-auto">
+            </div>
+        </header>
+
+        <!-- Carrusel -->
+        <div id="carrusel" class="carousel slide bg-primary text-center" data-bs-ride="carousel">
+
+            <div class="carousel-inner">
+
+                <!-- Diapositiva -->
+                <div class="carousel-item active">
+                    <!-- Imagen de la diapositiva -->
+                    <img src="../images/image1.png" class="w-100 img-fluid" alt="image1">
+                    <!-- Leyenda de la diapositiva -->
+                    <div class="leyenda carousel-caption d-none d-md-block">
+                        <h5 class="libro-titulo">lo que el viento se dejó</h5>
+                        <p class="libro-autor">margarita michaels<span class="libro-genero text-info">MELODRAMA</span></p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="../images/image2.png" class="w-100 img-fluid" alt="image2">
+                    <div class="leyenda carousel-caption d-none d-md-block">
+                        <h5 class="libro-titulo">a sangre caliente</h5>
+                        <p class="libro-autor">truhán capote<span class="libro-genero text-info">THRILLER</span></p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="../images/image3.png" class="w-100 img-fluid" alt="image3">
+                    <div class="leyenda carousel-caption d-none d-md-block">
+                        <h5 class="libro-titulo">trono de ketchup</h5>
+                        <p class="libro-autor">guillermo checspir<span class="libro-genero text-info">TERROR</span></p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="../images/image4.png" class="w-100 img-fluid" alt="image4">
+                    <div class="leyenda carousel-caption d-none d-md-block">
+                        <h5 class="libro-titulo">un paseillo en submarino</h5>
+                        <p class="libro-autor">julio barniz<span class="libro-genero text-info">AVENTURAS</span></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Botones de navegación del carrusel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carrusel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#carrusel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            
+          </div>
+
+          <!-- Cinta con parte de la paleta de colores de Bootstrap redefinida en la plantilla CSS -->
+          <div class="paleta">
+              <table>
+                  <td class="bg-primary"><i class="fas fa-star"></i></td>
+                  <td class="bg-secondary"><i class="fas fa-star"></i></td>
+                  <td class="bg-success"><i class="fas fa-star"></i></td>
+                  <td class="bg-danger"><i class="fas fa-star"></i></td>
+                  <td class="bg-warning"><i class="fas fa-star"></i></td>
+                  <td class="bg-info"><i class="fas fa-star"></i></td>
+                  <td class="bg-light"><i class="fas fa-star"></i></td>
+                  <td class="bg-dark"><i class="fas fa-star"></i></td>
+                  <td class="bg-muted"><i class="fas fa-star"></i></td>
+                  <td class="bg-white"><i class="fas fa-star"></i></td>
+              </table>
+          </div>
+
+        <!-- Sección de novedades -->
+        <section class="page-section portfolio" id="novedades">
+            <div class="container">
+                <!-- Cabecera de la sección de novedades -->
+                <h2 class="page-section-heading text-center text-uppercase mb-0">Novedades</h2>
+                <!-- Icono divisor (estrella) -->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Grilla de novedades -->
+                <div class="row justify-content-center">
+                    <!-- Artículo 1-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target=".modal-generico">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="../images/image1.png" alt="image1">
+                            <div class="leyenda">
+                                <h5 class="libro-titulo">lo que el viento se dejó</h5>
+                                <p class="libro-autor">margarita michaels<span class="libro-genero text-info">MELODRAMA</span></p>
+                            </div>                            
+                        </div>
+                    </div>
+                    <!-- Artículo 2-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target=".modal-generico">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="../images/image2.png" alt="image2">
+                            <div class="leyenda d-none d-md-block">
+                                <h5 class="libro-titulo">a sangre caliente</h5>
+                                <p class="libro-autor">truhán capote<span class="libro-genero text-info">THRILLER</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Artículo 3-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target=".modal-generico">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="../images/image3.png" alt="image3">
+                            <div class="leyenda">
+                                <h5 class="libro-titulo">trono de ketchup</h5>
+                                <p class="libro-autor">guillermo checspir<span class="libro-genero text-info">TERROR</span></p>
+                            </div>
+       
+                        </div>
+                    </div>
+                    <!-- Artículo 4-->
+                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target=".modal-generico">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="../images/image4.png" alt="image4">
+                            <div class="leyenda">
+                                <h5 class="libro-titulo">un paseillo en submarino</h5>
+                                <p class="libro-autor">julio barniz<span class="libro-genero text-info">AVENTURAS</span></p>
+                            </div>                            
+                        </div>
+                    </div>
+                    <!-- Artículo 5-->
+                    <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target=".modal-generico">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="../images/image5.png" alt="image5">
+                            <div class="leyenda">
+                                <h5 class="libro-titulo">el circo de las vanidades</h5>
+                                <p class="libro-autor">Tomás Lobatón<span class="libro-genero text-info">AVENTURAS</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Artículo 6-->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target=".modal-generico">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="../images/image6.png" alt="image6">
+                            <div class="leyenda">
+                                <h5 class="libro-titulo">atraco al banco de al lado</h5>
+                                <p class="libro-autor">Juan Bunker<span class="libro-genero text-info">POLICÍACO</span></p>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Sobre nosotros-->
+        <section class="page-section bg-primary text-white mb-0" id="about">
+            <div class="container">
+                <!-- Cabecera de la sección sobre nosotros -->
+                <h2 class="page-section-heading text-center text-uppercase">Sobre nosotros</h2>
+                <!-- Icono divisor (estrella) -->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Contenido de la sección sobre nosotros-->
+                <div class="row">
+                    <div class="col-lg-4 ms-auto"><p class="lead">Metro Book es una web ficticia en la que se supone que escritores publicarían sus libros y el cliente pagaría por ellos lo que considerara.</p></div>
+                    <div class="col-lg-4 me-auto"><p class="lead">Es el mismo concepto que aplican otras webs como panelsyndicate (que publica cómic digital en español) o humblebundle (que publica principalmente videojuegos)</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pie de página-->
+        <footer class="footer text-center bg-muted">
+            <div class="container">
+                <div class="row">
+                    <!-- Dirección -->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Dirección</h4>
+                        <p class="lead mb-0">
+                            2215 John Daniel Drive
+                            <br />
+                            Clark, MO 65243
+                        </p>
+                    </div>
+                    <!-- Redes sociales -->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Redes sociales</h4>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+                    </div>
+                    <!-- Créditos -->
+                    <div class="col-lg-4">
+                        <h4 class="text-uppercase mb-4">Créditos</h4>
+                        <p class="lead mb-0">
+                            Metro Book está basado en Freelance, una plantilla con licencia MIT que se puede usar libremente y creada por
+                            <a href="http://startbootstrap.com">Start Bootstrap</a>
+                        </p>
+                        <div class="text-center mt-4">
+                            <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
+                                <i class="fas fa-download me-2"></i>
+                                Descargar plantilla
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Sección copyleft -->
+        <div class="copyright py-4 text-center text-white">
+            <div class="container"><small>Copyleft &copy; Metro Book 2021</small></div>
+        </div>
+        
+        <!-- "ventanas" modales -->
+
+        <!-- formulario modal para login-->
+        <div class="portfolio-modal modal fade" id="modal-login" tabindex="-1" aria-labelledby="modal-login" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Título del formulario -->
+                                    <h2 class="portfolio-modal-title text-primary text-uppercase mb-0">Login</h2>
+                                    <!-- Icono divisor (estrella) -->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Formulario -->
+                                    <form id="form-login" action="index.html" method="POST">
+                                        <!-- Email -->
+                                        <div class="form-floating mb-3">
+                                            <div class="input-group has-validation">
+                                                <label for="email" class="form-label w-100">Cuenta de correo electrónica</label>
+                                                <input class="form-control" name="email" type="email" placeholder="nombre@dominio.com" required />
+                                                <div class="invalid-feedback">El nombre de la cuenta de correo no es válido.</div>
+                                            </div>
+                                        </div>
+                                        <!-- Password-->
+                                        <div class="form-floating mb-3">
+                                            <div class="input-group has-validation">
+                                                <label for="password" class="form-label w-100">Contraseña</label>
+                                                <input class="form-control" name="password" type="password" placeholder="contraseña (oculta)" required />
+                                                <div class="invalid-feedback">Introduce la contraseña.</div>
+                                            </div>
+                                        </div>
+                                        <!-- Botón de envío -->
+                                        <button class="btn btn-primary btn-xl" id="submitButton" type="submit">enviar</button>
+                                    </form>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- formulario modal para registro-->
+        <div class="portfolio-modal modal fade" id="modal-registro" tabindex="-1" aria-labelledby="modal-registro" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Título del formulario -->
+                                    <h2 class="portfolio-modal-title text-primary text-uppercase mb-0">Registro</h2>
+                                    <!-- Icono divisor (estrella) -->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Formulario -->
+                                    <form id="form-registro" action="index.html" method="POST">
+                                        <!-- Nombre -->
+                                        <div class="form-floating mb-3">
+                                            <div class="input-group has-validation">
+                                                <label for="email" class="form-label w-100">Nombre</label>
+                                                <input class="form-control" name="email" type="text" placeholder="nombre" required/>
+                                            </div>
+                                        </div>                                        
+                                        <!-- Email -->
+                                        <div class="form-floating mb-3">
+                                            <div class="input-group has-validation">
+                                                <label for="email" class="form-label w-100">Cuenta de correo electrónica</label>
+                                                <input class="form-control" name="email" type="email" placeholder="nombre@dominio.com" required/>
+                                            </div>
+                                        </div>
+                                        <!-- Repetir Email -->
+                                        <div class="form-floating mb-3">
+                                            <div class="input-group has-validation">
+                                                <label for="email" class="form-label w-100">Repite cuenta de correo electrónica</label>
+                                                <input class="form-control" name="email-repeat" type="email" placeholder="nombre@dominio.com" required/>
+                                            </div>
+                                        </div>                                        
+                                        <!-- Contraseña -->
+                                        <div class="form-floating mb-3">
+                                            <div class="input-group has-validation">
+                                                <label for="password" class="form-label w-100">Contraseña</label>
+                                                <input class="form-control" name="password" type="password" placeholder="contraseña (oculta)" required novalidate />
+                                            </div>
+                                        </div>
+                                         <!-- Repetir contraseña -->
+                                        <div class="form-floating mb-3">
+                                            <div class="input-group has-validation">
+                                                <label for="password" class="form-label w-100">Repite contraseña</label>
+                                                <input class="form-control" name="password-repeat" type="password" placeholder="contraseña (oculta)" required novalidate />
+                                            </div>
+                                        </div>                                        
+                                        <!-- Botón de envío -->
+                                        <button class="btn btn-primary btn-xl" id="submitButton" type="submit">enviar</button>
+                                    </form>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- formulario modal para pagos -->
+        <div class="portfolio-modal modal modal-generico fade" tabindex="-1" aria-labelledby="modal-registro" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Título del formulario -->
+                                    <h2 class="portfolio-modal-title text-primary text-uppercase mb-0">Paga por este artículo</h2>
+                                    <!-- Icono divisor (estrella) -->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Formulario -->
+                                    <form id="form-precio" action="index.html" method="POST">
+                                        <!-- Email -->
+                                        <div class="form-floating mb-3">
+                                            <div class="input-group has-validation">
+                                                <label for="precio" class="form-label w-100">Precio (máx. 10€)</label>
+                                                <input class="form-control" name="precio" type="number" min=0 max=10 placeholder="€" required/>
+                                            </div>
+                                        </div>                                        
+                                        <!-- Botón de envío -->
+                                        <button class="btn btn-primary btn-xl" id="submitButton" type="submit">pagar</button>
+                                    </form>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JS - CDN 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+        -->
+        <!-- Bootstrap core JS - hospedado - se desactiva mediante este comentario -->
+        <script src="libs/bootstrap.min.js"></script>
+
+    </body>
+</html>
