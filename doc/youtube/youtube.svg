@@ -1,0 +1,582 @@
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   width='1456' height='814' viewBox='0 0 1456 814' >
+  <script type='text/ecmascript'>
+  <![CDATA[
+  function hghl(el) { for ( var i in el ){ var elem = document.getElementById(el[i]); if ( elem != null ) elem.setAttribute('class','highlight');  }  }
+  function uhghl(el) { for ( var i in el ){ var elem = document.getElementById(el[i]); if ( elem != null ) elem.setAttribute('class','unhighlight'); }  } 
+  ]]>
+  </script> 
+
+<style type='text/css'>
+  text                { fill:#000000; font-family: System, 'Trebuchet MS', Dialog; font-size:14.083333015441895px; }
+  a text:hover        { fill:#0d196f; text-shadow: 0px 0px 6px #d0ce00; font-size:13px; font-weight: bold;}
+  text.highlight      { fill:#0d196f; text-shadow: 0px 0px 4px #eac533; font-size:13px; font-weight: bold;}
+  text.white          { fill:#ffffff; }
+  text.colType        { fill:#b3b3b3; }
+  text.relName        { fill:#9c9a9a; }
+  text.legendTitle    { fill:#d65c68; font-weight:bold; }
+  text.legendSubTitle { fill:#717171; font-size:11px; }
+  path                { stroke:#928c7e; stroke-width:1.25; fill:none; }
+  path.virtual        { stroke:#a364b5; }
+  path.logo           { fill:#fbeac0;fill-opacity:1;stroke-width:0.3;stroke:#222222; }
+  path.dotted         { stroke-dasharray:4,2; }
+  path.unhighlight    { stroke-width:10; opacity:0; }
+  path.highlight      { stroke-width:3; stroke:#0054c5; opacity:0.8; }
+  path.line           { stroke-width:10; stroke-linecap:round; stroke-linejoin:round; }
+  rect.entity         { fill:#ffffff; stroke:#777; stroke-width:0;shape-rendering:crispEdges; filter:url(#shadow); }
+  line.delim          { stroke-width:1; shape-rendering:crispEdges; }
+  text.callout        { fill:#000000; font-family: System, 'Trebuchet MS', Dialog; font-size:14.625px; }
+  rect.callout        { fill:url(#calloutGradient); stroke:#bebdbd; stroke-width:0.5; }
+  rect.shape          { stroke:#bebdbd; stroke-width:0.5; }
+  rect.grp            { stroke:#a1a1a1; stroke-width:3; opacity:0.35; }
+  path.bgPattern      { fill:none;stroke-width:0.6;stroke:#e5e9ed; }
+  rect.palpable       { fill:#fffbe5; }
+</style>
+<defs>
+  <radialGradient id='layoutBgB' cx='100%' cy='100%' r='100%'  >
+    <stop offset='0%' stop-color='#dfdfdf' />
+    <stop offset='100%' stop-color='#f2f2f2' />
+  </radialGradient>
+  <pattern id="layoutBgA" width="60" height="34.64" patternUnits="userSpaceOnUse">
+    <rect width="100%" height="100%" fill="#f5f5f5" />
+    <path class='bgPattern' d='M 0 17.32 L 10 0 L 30 0 L 40 17.326 L 30 34.64 L 10 34.64 Z' />
+    <path class='bgPattern' d='M 40 17.32 L 60 17.32 Z' />
+  </pattern>
+  <!-- https://norbat.de/svg-pattern-3d-webmuster/ -->
+  <linearGradient id='groupUnderTitleLine' x1='0%' y1='0%' x2='100%' y2='0%' >
+    <stop offset='0%' stop-color='#999999' stop-opacity='0.7'/>
+    <stop offset='100%' stop-color='#999999' stop-opacity='0' />
+  </linearGradient>
+  <radialGradient id='calloutGradient' cx='25%' cy='20%' r='80%' fx='10%' fy='10%'>
+    <stop offset='0%' stop-color='#ffffff' />
+    <stop offset='100%' stop-color='#f8f6d1' />
+  </radialGradient>
+  <filter id="shadow" width="120%" height="120%">
+    <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#333" flood-opacity="0.2" />
+  </filter>
+  <!--
+  <filter id='shadow2' width='120%' height='120%'>
+    <feOffset result='offOut' in='SourceGraphic' dx='0' dy='0' />
+    <feColorMatrix result='matrixOut' in='offOut'
+                   values='0.5 0 0 0 0 0 0.5 0 0 0 0 0 0.5 0 0 0 0 0 0.5 0' />
+    <feGaussianBlur result='blurOut' in='matrixOut' stdDeviation='3' />
+    <feBlend in='SourceGraphic' in2='blurOut' />
+  </filter>
+  -->
+  <filter id='fkShadow' height='130%'>
+    <feGaussianBlur in='SourceAlpha' stdDeviation='1.5'/> <!-- stdDeviation is how much to blur -->
+    <feOffset dx='1.2' dy='1.2' result='offsetblur'/> <!-- how much to offset -->
+    <feMerge>
+      <feMergeNode/> <!-- this contains the offset blurred image -->
+      <feMergeNode in='SourceGraphic'/> <!-- this contains the element that the filter is applied to -->
+    </feMerge>
+  </filter>
+  <radialGradient id='legendGradient' cx='5%' cy='5%' r='100%' >
+    <stop offset='0%' stop-color='#e4eeff' stop-opacity='1'/>
+    <stop offset='100%' stop-color='#c3d2ea' stop-opacity='1' />
+  </radialGradient>
+  <symbol id='calloutArrowDown' >
+    <path d='M 0,0 L 8,12 L 16,0 z' style='fill:#f8f6d1;stroke:none; filter: url(#shadow);' />
+    <path d='M 0,0 L 8,12 L 16,0' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='calloutArrowUp' >
+    <path d='M 0,16 L 8,4 L 16,16 z' style='fill:#ffffff; stroke:none; filter: url(#shadow);' />
+    <path d='M 0,16 L 8,4 L 16,16' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='pk' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <path style='fill:#f0d938;stroke:#906b25;stroke-width:0.6;stroke-linecap:round;stroke-linejoin:round;'
+            d='M 9.3678877,3.5695485 C 9.1030218,3.2729386 9.0796382,2.7628519 9.3396185,2.4517097 9.5449651,2.1956495 9.9040386,2.0980533 10.199638,2.2169415 10.533525,2.3415459 10.775153,2.706942 10.750675,3.0842709 10.737029,3.3980003 10.541153,3.699122 10.258248,3.8066067 9.966649,3.9250429 9.6169668,3.8418805 9.4008073,3.6062324 9.3894892,3.5943518 9.3785264,3.582104 9.3678886,3.5695487 z M 11.226617,6.9916004 C 11.888137,6.3548946 12.293488,5.4172188 12.311087,4.442353 12.378144,2.7379364 11.248678,1.0541269 9.7322318,0.44767357 8.3887112,-0.1280313 6.7865012,0.26822889 5.8918395,1.4007929 5.080823,2.3839145 4.9336815,3.8452096 5.3635544,5.101615 L 4.3670905,5.315913 C 4.0664984,5.3682645 4.0967703,5.6316724 4.2574957,5.8208829 L 4.9124,6.5655244 4.1543436,7.2512357 3.2136002,7.2163506 3.1674775,8.5586827 2.0406832,8.5086512 1.5965306,8.9299953 1.5471661,10.179833 0.75616674,10.195223 0.2112857,10.758575 0.15354288,11.735988 0.07199052,12.765553 c 0.36440953,0.238225 0.79006967,0.195492 1.44938278,-0.02675 L 6.3033562,8.1282037 6.8217102,8.6765688 C 6.9985465,8.8799427 7.3003699,8.7497574 7.358381,8.5016252 L 7.4938877,7.5084164 c 0.8537488,0.3985387 1.8303125,0.4711541 2.6851793,0.1427713 0.393927,-0.1407258 0.746858,-0.3701772 1.04755,-0.6595873 z'/>
+      <path d='M 6.8014948,6.3102123 0.15369063,13.024481 0.21560535,12.141962 6.0062342,6.2683782 z'
+            style='fill:#ffe5a5;fill-opacity:1;stroke:#906b25;stroke-width:0.06912433;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:3.00300009'/>
+    </g>
+  </symbol>
+  <symbol id='idx1' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <rect width='4' height='4' x='7' y='1' style='fill:#ffff3f;stroke:#b48333;stroke-width:0.6;' ry='0.83'/>
+      <rect width='4' height='4' x='1' y='7' style='fill:#ffff3f;stroke:#b48333;stroke-width:0.6;' ry='0.832'/>
+      <rect width='4' height='4' x='7' y='7' style='fill:#ffff3f;stroke:#b48333;stroke-width:0.6;' ry='0.832'/>
+    </g>
+  </symbol>
+  <symbol id='idx2' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <rect width='4' height='3' x='6' y='1' style='fill:#7fc8e9;stroke:#2f6f8c;stroke-width:0.6;' ry='0.83'/>
+      <rect width='7' height='3' x='3' y='6' style='fill:#7fc8e9;stroke:#2f6f8c;stroke-width:0.6;' ry='0.832'/>
+    </g>
+  </symbol>
+  <symbol id='unq' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <rect style='fill:none;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+            width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+            transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+      <text x='5.8' y='7.4' style='font-size:7px;fill:#8a8a8a;'>1</text>
+    </g>
+  </symbol>
+  <symbol id='idx' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <rect style='fill:none;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+            width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+            transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+    </g>
+  </symbol>
+  <symbol id='fk' width="13" height="13">
+    <g transform='scale(0.87)'>
+      <path style='fill:#6a88cd;stroke:#5a72a8;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 12.48,0.33 7.07,0.89 9.067,2.974 0.329,11.731 1.073,12.597 9.811,3.841 11.77,5.78 z' />
+    </g>
+  </symbol>
+  <symbol id='ref' width="13" height="13">
+    <g transform='scale(0.87)'>
+      <path style='fill:#f0d938;stroke:#906b25;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 0.10,12.70 5.31,12.15 3.40,10.06 11.82,1.32 11.11,0.45 2.68,9.19 0.80,7.24 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag0' width="13" height="13">
+    <g transform='scale(0.92)'>
+      <path style='fill:#b7d0f6;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag1' width="13" height="13">
+    <g transform='scale(0.92)'>
+      <path style='fill:#f4a393;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag2' width="13" height="13">
+    <g transform='scale(0.92)'>
+      <path style='fill:#77ec8b;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='nn' width="3" height="3">
+    <path style='stroke:#9b3e50;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0,0 3,3 M 0,3 3,0 z'/>
+  </symbol>
+  <symbol id='virtual' width="13" height="13">
+    <circle cx='6' cy='6.5' r='5.5' fill='#a3dda3' stroke='#4c6a4c' stroke-width='0.5'/>
+    <path style='stroke:#ffffff;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 3,4 6,10 9,4'/>
+  </symbol>
+  <symbol id='view' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <line x1='12' y1='6' x2='19' y2='0' stroke='black' stroke-width='0.5' />
+      <line x1='0' y1='6' x2='7' y2='0' stroke='black' stroke-width='0.5' />
+      <circle cx='3' cy='6' r='3' fill='#f9ebbc' stroke='black' stroke-width='0.5'/>
+      <circle cx='10' cy='6' r='3' fill='#f9ebbc' stroke='black' stroke-width='0.5'/>
+    </g>
+  </symbol>
+
+</defs>
+
+<defs>  <marker id='arrow0u' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 8.000,4.000 L 16.000,4.000 L 8.000,0.000 L 16.000,4.000 L 8.000,8.000' />
+  </marker>
+  <marker id='arrow1u' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 8.000,4.000 L 16.000,4.000 L 8.000,0.000 L 16.000,4.000 L 8.000,8.000' />
+  </marker>
+  <marker id='arrow0' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <circle cx='4.00' cy='4.00' r='2.67' style='fill:white;stroke:#5e554d;' />
+    <path d='M 16.00,0.00 L 8.00,4.00 L 16.00,8.00' />
+  </marker>
+  <marker id='arrow1' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <path d='M 16.00,0.00 L 8.00,4.00 L 16.00,8.00' />
+  </marker>
+  <marker id='foot0u' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <circle cx='12.00' cy='4.00' r='2.67' style='fill:white;stroke:#5e554d;' />
+    <path d='M 4.00,0.00 L 4.00, 8.00 z' />
+  </marker>
+  <marker id='foot0' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <circle cx='12.00' cy='4.00' r='2.67' style='fill:white;stroke:#5e554d;' />
+    <path d='M 0.00,0.00 L 8.00,4.00 L 0.00,8.00' />
+  </marker>
+  <marker id='foot1u' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <path d='M 8.00,0.00 L 8.00, 8.00 z' />
+    <path d='M 4.00,0.00 L 4.00, 8.00 z' />
+  </marker>
+  <marker id='foot1' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <path d='M 8.00,0.00 L 8.00, 8.00 z' />
+    <path d='M 0.00,0.00 L 8.00,4.00 L 0.00,8.00' />
+  </marker>
+  <marker id='line_arrow' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 8.000,4.000 L 16.000,4.000 L 8.000,0.000 L 16.000,4.000 L 8.000,8.000' />
+  </marker>
+  <marker id='line_straight' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+  </marker>
+  <linearGradient id='tbg_C7F4BE' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#EDFFEA' /> 
+     <stop offset='40%' stop-color='#CDE2C9' /> 
+     <stop offset='100%' stop-color='#EBFFE7' /> 
+  </linearGradient>
+  <linearGradient id='tbg_BED3F4' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#EAF2FF' /> 
+     <stop offset='40%' stop-color='#C9D2E2' /> 
+     <stop offset='100%' stop-color='#E7F0FF' /> 
+  </linearGradient>
+</defs>
+
+<!-- == Shape Colors == -->
+<!-- == Desktop == -->
+<rect x='1' y='1' width='1454' height='812' rx='8' ry='8' style='fill:url(#layoutBgA); stroke:#aaa; stroke-width:1px;' />
+<rect x='1' y='1' width='1454' height='812' rx='8' ry='8' style='fill:url(#layoutBgTr);' />
+
+<!-- == Legend == -->
+<g transform='translate(10,10)'>
+  <rect x='10' y='10' width='420' height='70' rx='6' ry='6' style='fill:url(#legendGradient);filter:url(#shadow);'/> 
+  <text x='20' y='25' class='legendTitle' >youtube</text> 
+  <a xlink:href='https://dbschema.com'><text x='20' y='39' class='legendSubTitle'><tspan>(c) DbSchema</tspan></text></a> 
+  <text x='20' y='53' class='legendSubTitle'><tspan>Read table and column comments as mouse-over tooltips.</tspan></text> 
+  <text x='20' y='67' class='legendSubTitle'><tspan>Zoom ~ Ctrl + mouse wheel, panning ~ drag + right-mouse button.</tspan></text> 
+</g>
+
+<g transform='translate(0,110)'>
+<!-- == Fk 'canal_canal_ibfk_1' == -->
+<path id='canal_canal_ibfk_1'  onmouseover="hghl(['canal_canal_ibfk_1','youtube.canal.usuario_id','youtube.usuario.id'])" onmouseout="uhghl(['canal_canal_ibfk_1','youtube.canal.usuario_id','youtube.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 448,64L 384,64' >
+	<title>Fk canal_ibfk_1
+canal ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 448,64L 384,64' ><title>Fk canal_ibfk_1
+canal ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='386' y='59' transform='rotate(0 386,59)' class='relName'>usuario_id</text>
+<!-- == Fk 'playlist_playlist_ibfk_1' == -->
+<path id='playlist_playlist_ibfk_1'  onmouseover="hghl(['playlist_playlist_ibfk_1','youtube.playlist.usuario_id','youtube.usuario.id'])" onmouseout="uhghl(['playlist_playlist_ibfk_1','youtube.playlist.usuario_id','youtube.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 144,304L 144,184Q 144,176 152,176L 240,176' >
+	<title>Fk playlist_ibfk_1
+playlist ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 144,304L 144,184Q 144,176 152,176L 240,176' ><title>Fk playlist_ibfk_1
+playlist ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='147' y='302' transform='rotate(270 147,302)' class='relName'>usuario_id</text>
+<!-- == Fk 'playlist_item_playlist_item_ibfk_1' == -->
+<path id='playlist_item_playlist_item_ibfk_1'  onmouseover="hghl(['playlist_item_playlist_item_ibfk_1','youtube.playlist_item.playlist_id','youtube.playlist.id'])" onmouseout="uhghl(['playlist_item_playlist_item_ibfk_1','youtube.playlist_item.playlist_id','youtube.playlist.id'])" transform='translate(8,0)' class='unhighlight' d='M 240,560L 152,560Q 144,560 144,552L 144,464' >
+	<title>Fk playlist_item_ibfk_1
+playlist_item ref playlist ( playlist_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 240,560L 152,560Q 144,560 144,552L 144,464' ><title>Fk playlist_item_ibfk_1
+playlist_item ref playlist ( playlist_id -&gt; id )</title></path>
+<text x='180' y='555' transform='rotate(0 180,555)' class='relName'>playlist_id</text>
+<!-- == Fk 'playlist_item_playlist_item_ibfk_2' == -->
+<path id='playlist_item_playlist_item_ibfk_2'  onmouseover="hghl(['playlist_item_playlist_item_ibfk_2','youtube.playlist_item.video_id','youtube.video.id'])" onmouseout="uhghl(['playlist_item_playlist_item_ibfk_2','youtube.playlist_item.video_id','youtube.video.id'])" transform='translate(8,0)' class='unhighlight' d='M 352,544L 352,440Q 352,432 360,432L 712,432Q 720,432 720,424L 720,280Q 720,272 728,272L 736,272' >
+	<title>Fk playlist_item_ibfk_2
+playlist_item ref video ( video_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 352,544L 352,440Q 352,432 360,432L 712,432Q 720,432 720,424L 720,280Q 720,272 728,272L 736,272' ><title>Fk playlist_item_ibfk_2
+playlist_item ref video ( video_id -&gt; id )</title></path>
+<text x='355' y='542' transform='rotate(270 355,542)' class='relName'>video_id</text>
+<!-- == Fk 'usuario_suscripciones_usuario_suscripciones_ibfk_2' == -->
+<path id='usuario_suscripciones_usuario_suscripciones_ibfk_2'  onmouseover="hghl(['usuario_suscripciones_usuario_suscripciones_ibfk_2','youtube.usuario_suscripciones.canal_id','youtube.canal.id'])" onmouseout="uhghl(['usuario_suscripciones_usuario_suscripciones_ibfk_2','youtube.usuario_suscripciones.canal_id','youtube.canal.id'])" transform='translate(8,0)' class='unhighlight' d='M 480,304L 480,192' >
+	<title>Fk usuario_suscripciones_ibfk_2
+usuario_suscripciones ref canal ( canal_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 480,304L 480,192' ><title>Fk usuario_suscripciones_ibfk_2
+usuario_suscripciones ref canal ( canal_id -&gt; id )</title></path>
+<text x='483' y='302' transform='rotate(270 483,302)' class='relName'>canal_id</text>
+<!-- == Fk 'usuario_suscripciones_usuario_suscripciones_ibfk_1' == -->
+<path id='usuario_suscripciones_usuario_suscripciones_ibfk_1'  onmouseover="hghl(['usuario_suscripciones_usuario_suscripciones_ibfk_1','youtube.usuario_suscripciones.usuario_id','youtube.usuario.id'])" onmouseout="uhghl(['usuario_suscripciones_usuario_suscripciones_ibfk_1','youtube.usuario_suscripciones.usuario_id','youtube.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 448,320L 408,320Q 400,320 400,312L 400,216Q 400,208 392,208L 384,208' >
+	<title>Fk usuario_suscripciones_ibfk_1
+usuario_suscripciones ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 448,320L 408,320Q 400,320 400,312L 400,216Q 400,208 392,208L 384,208' ><title>Fk usuario_suscripciones_ibfk_1
+usuario_suscripciones ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='386' y='315' transform='rotate(0 386,315)' class='relName'>usuario_id</text>
+<!-- == Fk 'video_video_ibfk_1' == -->
+<path id='video_video_ibfk_1'  onmouseover="hghl(['video_video_ibfk_1','youtube.video.usuario_id','youtube.usuario.id'])" onmouseout="uhghl(['video_video_ibfk_1','youtube.video.usuario_id','youtube.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 736,208L 424,208Q 416,208 416,200L 416,200Q 416,192 408,192L 384,192' >
+	<title>Fk video_ibfk_1
+video ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 736,208L 424,208Q 416,208 416,200L 416,200Q 416,192 408,192L 384,192' ><title>Fk video_ibfk_1
+video ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='674' y='203' transform='rotate(0 674,203)' class='relName'>usuario_id</text>
+<!-- == Fk 'video_comentario_video_comentario_ibfk_3' == -->
+<path id='video_comentario_video_comentario_ibfk_3'  onmouseover="hghl(['video_comentario_video_comentario_ibfk_3','youtube.video_comentario.usuario_id','youtube.usuario.id'])" onmouseout="uhghl(['video_comentario_video_comentario_ibfk_3','youtube.video_comentario.usuario_id','youtube.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 976,48L 936,48Q 928,48 928,40L 928,8Q 928,0 920,0L 360,0Q 352,0 352,8L 352,32' >
+	<title>Fk video_comentario_ibfk_3
+video_comentario ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 976,48L 936,48Q 928,48 928,40L 928,8Q 928,0 920,0L 360,0Q 352,0 352,8L 352,32' ><title>Fk video_comentario_ibfk_3
+video_comentario ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='914' y='43' transform='rotate(0 914,43)' class='relName'>usuario_id</text>
+<!-- == Fk 'video_comentario_video_comentario_ibfk_2' == -->
+<path id='video_comentario_video_comentario_ibfk_2'  onmouseover="hghl(['video_comentario_video_comentario_ibfk_2','youtube.video_comentario.video_id','youtube.video.id'])" onmouseout="uhghl(['video_comentario_video_comentario_ibfk_2','youtube.video_comentario.video_id','youtube.video.id'])" transform='translate(8,0)' class='unhighlight' d='M 976,64L 912,64' >
+	<title>Fk video_comentario_ibfk_2
+video_comentario ref video ( video_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 976,64L 912,64' ><title>Fk video_comentario_ibfk_2
+video_comentario ref video ( video_id -&gt; id )</title></path>
+<text x='928' y='59' transform='rotate(0 928,59)' class='relName'>video_id</text>
+<!-- == Fk 'video_comentario_dislike_video_comentario_dislike_ibfk_3' == -->
+<path id='video_comentario_dislike_video_comentario_dislike_ibfk_3'  onmouseover="hghl(['video_comentario_dislike_video_comentario_dislike_ibfk_3','youtube.video_comentario_dislike.usuario_id','youtube.usuario.id'])" onmouseout="uhghl(['video_comentario_dislike_video_comentario_dislike_ibfk_3','youtube.video_comentario_dislike.usuario_id','youtube.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 1200,48L 1160,48Q 1152,48 1152,40L 1152,24Q 1152,16 1144,16L 376,16Q 368,16 368,24L 368,32' >
+	<title>Fk video_comentario_dislike_ibfk_3
+video_comentario_dislike ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 1200,48L 1160,48Q 1152,48 1152,40L 1152,24Q 1152,16 1144,16L 376,16Q 368,16 368,24L 368,32' ><title>Fk video_comentario_dislike_ibfk_3
+video_comentario_dislike ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='1138' y='43' transform='rotate(0 1138,43)' class='relName'>usuario_id</text>
+<!-- == Fk 'video_comentario_dislike_video_comentario_dislike_ibfk_2' == -->
+<path id='video_comentario_dislike_video_comentario_dislike_ibfk_2'  onmouseover="hghl(['video_comentario_dislike_video_comentario_dislike_ibfk_2','youtube.video_comentario_dislike.video_comentario_id','youtube.video_comentario.id'])" onmouseout="uhghl(['video_comentario_dislike_video_comentario_dislike_ibfk_2','youtube.video_comentario_dislike.video_comentario_id','youtube.video_comentario.id'])" transform='translate(8,0)' class='unhighlight' d='M 1200,64L 1136,64' >
+	<title>Fk video_comentario_dislike_ibfk_2
+video_comentario_dislike ref video_comentario ( video_comentario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 1200,64L 1136,64' ><title>Fk video_comentario_dislike_ibfk_2
+video_comentario_dislike ref video_comentario ( video_comentario_id -&gt; id )</title></path>
+<text x='1065' y='59' transform='rotate(0 1065,59)' class='relName'>video_comentario_id</text>
+<!-- == Fk 'video_comentario_like_video_comentario_like_ibfk_2' == -->
+<path id='video_comentario_like_video_comentario_like_ibfk_2'  onmouseover="hghl(['video_comentario_like_video_comentario_like_ibfk_2','youtube.video_comentario_like.usuario_id','youtube.usuario.id'])" onmouseout="uhghl(['video_comentario_like_video_comentario_like_ibfk_2','youtube.video_comentario_like.usuario_id','youtube.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 1200,320L 664,320Q 656,320 656,312L 656,248Q 656,240 648,240L 376,240Q 368,240 368,232L 368,224' >
+	<title>Fk video_comentario_like_ibfk_2
+video_comentario_like ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 1200,320L 664,320Q 656,320 656,312L 656,248Q 656,240 648,240L 376,240Q 368,240 368,232L 368,224' ><title>Fk video_comentario_like_ibfk_2
+video_comentario_like ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='1138' y='315' transform='rotate(0 1138,315)' class='relName'>usuario_id</text>
+<!-- == Fk 'video_comentario_like_video_comentario_like_ibfk_1' == -->
+<path id='video_comentario_like_video_comentario_like_ibfk_1'  onmouseover="hghl(['video_comentario_like_video_comentario_like_ibfk_1','youtube.video_comentario_like.video_comentario_id','youtube.video_comentario.id'])" onmouseout="uhghl(['video_comentario_like_video_comentario_like_ibfk_1','youtube.video_comentario_like.video_comentario_id','youtube.video_comentario.id'])" transform='translate(8,0)' class='unhighlight' d='M 1200,272L 1128,272Q 1120,272 1120,264L 1120,176' >
+	<title>Fk video_comentario_like_ibfk_1
+video_comentario_like ref video_comentario ( video_comentario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 1200,272L 1128,272Q 1120,272 1120,264L 1120,176' ><title>Fk video_comentario_like_ibfk_1
+video_comentario_like ref video_comentario ( video_comentario_id -&gt; id )</title></path>
+<text x='1065' y='267' transform='rotate(0 1065,267)' class='relName'>video_comentario_id</text>
+<!-- == Fk 'video_dislikes_video_dislikes_ibfk_2' == -->
+<path id='video_dislikes_video_dislikes_ibfk_2'  onmouseover="hghl(['video_dislikes_video_dislikes_ibfk_2','youtube.video_dislikes.usuario_id','youtube.usuario.id'])" onmouseout="uhghl(['video_dislikes_video_dislikes_ibfk_2','youtube.video_dislikes.usuario_id','youtube.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 736,448L 232,448Q 224,448 224,440L 224,200Q 224,192 232,192L 240,192' >
+	<title>Fk video_dislikes_ibfk_2
+video_dislikes ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 736,448L 232,448Q 224,448 224,440L 224,200Q 224,192 232,192L 240,192' ><title>Fk video_dislikes_ibfk_2
+video_dislikes ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='674' y='443' transform='rotate(0 674,443)' class='relName'>usuario_id</text>
+<!-- == Fk 'video_dislikes_video_dislikes_ibfk_1' == -->
+<path id='video_dislikes_video_dislikes_ibfk_1'  onmouseover="hghl(['video_dislikes_video_dislikes_ibfk_1','youtube.video_dislikes.video_id','youtube.video.id'])" onmouseout="uhghl(['video_dislikes_video_dislikes_ibfk_1','youtube.video_dislikes.video_id','youtube.video.id'])" transform='translate(8,0)' class='unhighlight' d='M 768,384L 768,304' >
+	<title>Fk video_dislikes_ibfk_1
+video_dislikes ref video ( video_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 768,384L 768,304' ><title>Fk video_dislikes_ibfk_1
+video_dislikes ref video ( video_id -&gt; id )</title></path>
+<text x='771' y='382' transform='rotate(270 771,382)' class='relName'>video_id</text>
+<!-- == Fk 'video_etiqueta_video_etiqueta_ibfk_2' == -->
+<path id='video_etiqueta_video_etiqueta_ibfk_2'  onmouseover="hghl(['video_etiqueta_video_etiqueta_ibfk_2','youtube.video_etiqueta.etiqueta_id','youtube.etiqueta.id'])" onmouseout="uhghl(['video_etiqueta_video_etiqueta_ibfk_2','youtube.video_etiqueta.etiqueta_id','youtube.etiqueta.id'])" transform='translate(8,0)' class='unhighlight' d='M 1104,480L 1104,568Q 1104,576 1112,576L 1184,576' >
+	<title>Fk video_etiqueta_ibfk_2
+video_etiqueta ref etiqueta ( etiqueta_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 1104,480L 1104,568Q 1104,576 1112,576L 1184,576' ><title>Fk video_etiqueta_ibfk_2
+video_etiqueta ref etiqueta ( etiqueta_id -&gt; id )</title></path>
+<text x='1117' y='482' transform='rotate(90 1117,482)' class='relName'>etiqueta_id</text>
+<!-- == Fk 'video_etiqueta_video_etiqueta_ibfk_1' == -->
+<path id='video_etiqueta_video_etiqueta_ibfk_1'  onmouseover="hghl(['video_etiqueta_video_etiqueta_ibfk_1','youtube.video_etiqueta.video_id','youtube.video.id'])" onmouseout="uhghl(['video_etiqueta_video_etiqueta_ibfk_1','youtube.video_etiqueta.video_id','youtube.video.id'])" transform='translate(8,0)' class='unhighlight' d='M 976,400L 904,400Q 896,400 896,392L 896,304' >
+	<title>Fk video_etiqueta_ibfk_1
+video_etiqueta ref video ( video_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 976,400L 904,400Q 896,400 896,392L 896,304' ><title>Fk video_etiqueta_ibfk_1
+video_etiqueta ref video ( video_id -&gt; id )</title></path>
+<text x='928' y='395' transform='rotate(0 928,395)' class='relName'>video_id</text>
+<!-- == Fk 'video_likes_video_likes_ibfk_2' == -->
+<path id='video_likes_video_likes_ibfk_2'  onmouseover="hghl(['video_likes_video_likes_ibfk_2','youtube.video_likes.usuario_id','youtube.usuario.id'])" onmouseout="uhghl(['video_likes_video_likes_ibfk_2','youtube.video_likes.usuario_id','youtube.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 272,304L 272,224' >
+	<title>Fk video_likes_ibfk_2
+video_likes ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 272,304L 272,224' ><title>Fk video_likes_ibfk_2
+video_likes ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='275' y='302' transform='rotate(270 275,302)' class='relName'>usuario_id</text>
+<!-- == Fk 'video_likes_video_likes_ibfk_1' == -->
+<path id='video_likes_video_likes_ibfk_1'  onmouseover="hghl(['video_likes_video_likes_ibfk_1','youtube.video_likes.video_id','youtube.video.id'])" onmouseout="uhghl(['video_likes_video_likes_ibfk_1','youtube.video_likes.video_id','youtube.video.id'])" transform='translate(8,0)' class='unhighlight' d='M 352,304L 352,264Q 352,256 360,256L 736,256' >
+	<title>Fk video_likes_ibfk_1
+video_likes ref video ( video_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 352,304L 352,264Q 352,256 360,256L 736,256' ><title>Fk video_likes_ibfk_1
+video_likes ref video ( video_id -&gt; id )</title></path>
+<text x='355' y='302' transform='rotate(270 355,302)' class='relName'>video_id</text>
+<!-- == Table 'canal' == -->
+<rect id='depict_youtube.canal' class='entity' style='stroke:none;' x='464' y='40' width='128' height='144' rx='8' ry='8' />
+<path d='M 464 68 L 464 48 Q 464 40 472 40 L 584 40 Q 592 40 592 48 L 592 68 L464 68 ' style='fill:url(#tbg_C7F4BE);stroke-width:0;' />
+<rect class='entity' x='464' y='40' width='128' height='144' rx='8' ry='8' style='fill:none;stroke:#CFE8CB'/>
+<a xlink:href='#youtube.canal'><text x='505' y='59' >canal</text><title>Table youtube.canal</title></a>
+  <use id='nn' x='466' y='77' xlink:href='#nn'/><use id='pk' x='466' y='76' xlink:href='#pk'><title>Pk pk_canal ( id ) </title></use><text id='youtube.canal.id' x='483' y='87' onmouseover="hghl(['usuario_suscripciones_usuario_suscripciones_ibfk_2','youtube.usuario_suscripciones.canal_id'])" onmouseout="uhghl(['usuario_suscripciones_usuario_suscripciones_ibfk_2','youtube.usuario_suscripciones.canal_id'])">id</text><title>id
+* int</title><a xlink:href='#youtube.canal'><use id='ref' x='580' y='76' xlink:href='#ref'/><title>Referred by usuario_suscripciones ( canal_id -&gt; id ) </title></a>
+  <use id='nn' x='466' y='93' xlink:href='#nn'/><text id='youtube.canal.nombre' x='483' y='103'>nombre</text><title>nombre
+* varchar(250)
+no UNIQUE porque podrían haber varios con el mismo nombre pero diferenciados por URL</title><text x='589' y='100' text-anchor='end' class='colType'>t</text>  <use id='nn' x='466' y='109' xlink:href='#nn'/><text id='youtube.canal.url' x='483' y='119'>url</text><title>url
+* varchar(250)
+no lo pide el ejercicio</title><text x='589' y='116' text-anchor='end' class='colType'>t</text>  <use id='nn' x='466' y='125' xlink:href='#nn'/><text id='youtube.canal.descripcion' x='483' y='135'>descripcion</text><title>descripcion
+* varchar(250)</title><text x='589' y='132' text-anchor='end' class='colType'>t</text>  <use id='nn' x='466' y='141' xlink:href='#nn'/><use id='idx' x='466' y='140' xlink:href='#idx'><title>usuario_id ( usuario_id ) </title></use><text id='youtube.canal.usuario_id' x='483' y='151' onmouseover="hghl(['canal_canal_ibfk_1','youtube.usuario.id'])" onmouseout="uhghl(['canal_canal_ibfk_1','youtube.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#youtube.canal'><use id='fk' x='580' y='140' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+  <use id='nn' x='466' y='157' xlink:href='#nn'/><text id='youtube.canal.fecha' x='483' y='167'>fecha</text><title>fecha
+* datetime default &apos;0000-00-00 00:00:00&apos;</title><text x='589' y='164' text-anchor='end' class='colType'>d</text>
+<!-- == Table 'etiqueta' == -->
+<rect id='depict_youtube.etiqueta' class='entity' style='stroke:none;' x='1200' y='568' width='96' height='80' rx='8' ry='8' />
+<path d='M 1200 596 L 1200 576 Q 1200 568 1208 568 L 1288 568 Q 1296 568 1296 576 L 1296 596 L1200 596 ' style='fill:url(#tbg_BED3F4);stroke-width:0;' />
+<rect class='entity' x='1200' y='568' width='96' height='80' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#youtube.etiqueta'><text x='1215' y='587' >etiqueta</text><title>Table youtube.etiqueta</title></a>
+  <use id='nn' x='1202' y='605' xlink:href='#nn'/><use id='pk' x='1202' y='604' xlink:href='#pk'><title>Pk pk_etiqueta ( id ) </title></use><text id='youtube.etiqueta.id' x='1219' y='615' onmouseover="hghl(['video_etiqueta_video_etiqueta_ibfk_2','youtube.video_etiqueta.etiqueta_id'])" onmouseout="uhghl(['video_etiqueta_video_etiqueta_ibfk_2','youtube.video_etiqueta.etiqueta_id'])">id</text><title>id
+* int</title><a xlink:href='#youtube.etiqueta'><use id='ref' x='1284' y='604' xlink:href='#ref'/><title>Referred by video_etiqueta ( etiqueta_id -&gt; id ) </title></a>
+  <use id='nn' x='1202' y='621' xlink:href='#nn'/><use id='unq' x='1202' y='620' xlink:href='#unq'><title>Unq nombre ( nombre ) </title></use><text id='youtube.etiqueta.nombre' x='1219' y='631'>nombre</text><title>nombre
+* varchar(50)</title><text x='1293' y='628' text-anchor='end' class='colType'>t</text>
+<!-- == Table 'playlist' == -->
+<rect id='depict_youtube.playlist' class='entity' style='stroke:none;' x='48' y='312' width='112' height='144' rx='8' ry='8' />
+<path d='M 48 340 L 48 320 Q 48 312 56 312 L 152 312 Q 160 312 160 320 L 160 340 L48 340 ' style='fill:url(#tbg_C7F4BE);stroke-width:0;' />
+<rect class='entity' x='48' y='312' width='112' height='144' rx='8' ry='8' style='fill:none;stroke:#CFE8CB'/>
+<a xlink:href='#youtube.playlist'><text x='75' y='331' >playlist</text><title>Table youtube.playlist</title></a>
+  <use id='nn' x='50' y='349' xlink:href='#nn'/><use id='pk' x='50' y='348' xlink:href='#pk'><title>Pk pk_playlist ( id ) </title></use><text id='youtube.playlist.id' x='67' y='359' onmouseover="hghl(['playlist_item_playlist_item_ibfk_1','youtube.playlist_item.playlist_id'])" onmouseout="uhghl(['playlist_item_playlist_item_ibfk_1','youtube.playlist_item.playlist_id'])">id</text><title>id
+* int</title><a xlink:href='#youtube.playlist'><use id='ref' x='148' y='348' xlink:href='#ref'/><title>Referred by playlist_item ( playlist_id -&gt; id ) </title></a>
+  <use id='nn' x='50' y='365' xlink:href='#nn'/><text id='youtube.playlist.nombre' x='67' y='375'>nombre</text><title>nombre
+* varchar(250)
+no UNIQUE porque podrían haber varias con el mismo nombre pero diferenciados por URL</title><text x='157' y='372' text-anchor='end' class='colType'>t</text>  <use id='nn' x='50' y='381' xlink:href='#nn'/><text id='youtube.playlist.url' x='67' y='391'>url</text><title>url
+* varchar(250)
+no lo pide el ejercicio</title><text x='157' y='388' text-anchor='end' class='colType'>t</text>  <use id='nn' x='50' y='397' xlink:href='#nn'/><text id='youtube.playlist.fecha' x='67' y='407'>fecha</text><title>fecha
+* datetime default &apos;0000-00-00 00:00:00&apos;</title><text x='157' y='404' text-anchor='end' class='colType'>d</text>  <use id='nn' x='50' y='413' xlink:href='#nn'/><text id='youtube.playlist.publico' x='67' y='423'>publico</text><title>publico
+* tinyint
+0 = privado, 1 = público</title><text x='157' y='420' text-anchor='end' class='colType'>#</text>  <use id='nn' x='50' y='429' xlink:href='#nn'/><use id='idx' x='50' y='428' xlink:href='#idx'><title>usuario_id ( usuario_id ) </title></use><text id='youtube.playlist.usuario_id' x='67' y='439' onmouseover="hghl(['playlist_playlist_ibfk_1','youtube.usuario.id'])" onmouseout="uhghl(['playlist_playlist_ibfk_1','youtube.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#youtube.playlist'><use id='fk' x='148' y='428' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+
+<!-- == Table 'playlist_item' == -->
+<rect id='depict_youtube.playlist_item' class='entity' style='stroke:none;' x='256' y='552' width='112' height='96' rx='8' ry='8' />
+<path d='M 256 580 L 256 560 Q 256 552 264 552 L 360 552 Q 368 552 368 560 L 368 580 L256 580 ' style='fill:url(#tbg_C7F4BE);stroke-width:0;' />
+<rect class='entity' x='256' y='552' width='112' height='96' rx='8' ry='8' style='fill:none;stroke:#CFE8CB'/>
+<a xlink:href='#youtube.playlist_item'><text x='263' y='571' >playlist_item</text><title>Table youtube.playlist_item</title></a>
+  <use id='nn' x='258' y='589' xlink:href='#nn'/><use id='pk' x='258' y='588' xlink:href='#pk'><title>Pk pk_playlist_item ( playlist_id, video_id ) </title></use><text id='youtube.playlist_item.playlist_id' x='275' y='599' onmouseover="hghl(['playlist_item_playlist_item_ibfk_1','youtube.playlist.id'])" onmouseout="uhghl(['playlist_item_playlist_item_ibfk_1','youtube.playlist.id'])">playlist_id</text><title>playlist_id
+* int</title><a xlink:href='#youtube.playlist_item'><use id='fk' x='356' y='588' xlink:href='#fk'/><title>References playlist ( playlist_id -&gt; id ) </title></a>
+  <use id='nn' x='258' y='605' xlink:href='#nn'/><use id='pk' x='258' y='604' xlink:href='#pk'><title>Pk pk_playlist_item ( playlist_id, video_id ) video_id ( video_id ) </title></use><text id='youtube.playlist_item.video_id' x='275' y='615' onmouseover="hghl(['playlist_item_playlist_item_ibfk_2','youtube.video.id'])" onmouseout="uhghl(['playlist_item_playlist_item_ibfk_2','youtube.video.id'])">video_id</text><title>video_id
+* int</title><a xlink:href='#youtube.playlist_item'><use id='fk' x='356' y='604' xlink:href='#fk'/><title>References video ( video_id -&gt; id ) </title></a>
+  <text id='youtube.playlist_item.orden' x='275' y='631'>orden</text><title>orden
+smallint
+orden de los videos en el playlist, no lo pide el ejercicio</title><text x='365' y='628' text-anchor='end' class='colType'>#</text>
+<!-- == Table 'usuario' == -->
+<rect id='depict_youtube.usuario' class='entity' style='stroke:none;' x='256' y='40' width='128' height='176' rx='8' ry='8' />
+<path d='M 256 68 L 256 48 Q 256 40 264 40 L 376 40 Q 384 40 384 48 L 384 68 L256 68 ' style='fill:url(#tbg_C7F4BE);stroke-width:0;' />
+<rect class='entity' x='256' y='40' width='128' height='176' rx='8' ry='8' style='fill:none;stroke:#CFE8CB'/>
+<a xlink:href='#youtube.usuario'><text x='290' y='59' >usuario</text><title>Table youtube.usuario</title></a>
+  <use id='nn' x='258' y='77' xlink:href='#nn'/><use id='pk' x='258' y='76' xlink:href='#pk'><title>Pk pk_usuario ( id ) </title></use><text id='youtube.usuario.id' x='275' y='87' onmouseover="hghl(['canal_canal_ibfk_1','youtube.canal.usuario_id','playlist_playlist_ibfk_1','youtube.playlist.usuario_id','usuario_suscripciones_usuario_suscripciones_ibfk_1','youtube.usuario_suscripciones.usuario_id','video_comentario_dislike_video_comentario_dislike_ibfk_3','youtube.video_comentario_dislike.usuario_id','video_comentario_video_comentario_ibfk_3','youtube.video_comentario.usuario_id','video_comentario_like_video_comentario_like_ibfk_2','youtube.video_comentario_like.usuario_id','video_dislikes_video_dislikes_ibfk_2','youtube.video_dislikes.usuario_id','video_video_ibfk_1','youtube.video.usuario_id','video_likes_video_likes_ibfk_2','youtube.video_likes.usuario_id'])" onmouseout="uhghl(['canal_canal_ibfk_1','youtube.canal.usuario_id','playlist_playlist_ibfk_1','youtube.playlist.usuario_id','usuario_suscripciones_usuario_suscripciones_ibfk_1','youtube.usuario_suscripciones.usuario_id','video_comentario_dislike_video_comentario_dislike_ibfk_3','youtube.video_comentario_dislike.usuario_id','video_comentario_video_comentario_ibfk_3','youtube.video_comentario.usuario_id','video_comentario_like_video_comentario_like_ibfk_2','youtube.video_comentario_like.usuario_id','video_dislikes_video_dislikes_ibfk_2','youtube.video_dislikes.usuario_id','video_video_ibfk_1','youtube.video.usuario_id','video_likes_video_likes_ibfk_2','youtube.video_likes.usuario_id'])">id</text><title>id
+* int</title><a xlink:href='#youtube.usuario'><use id='ref' x='372' y='76' xlink:href='#ref'/><title>Referred by canal ( usuario_id -&gt; id ) 
+Referred by playlist ( usuario_id -&gt; id ) 
+Referred by usuario_suscripciones ( usuario_id -&gt; id ) 
+Referred by video_comentario_dislike ( usuario_id -&gt; id ) 
+Referred by video_comentario ( usuario_id -&gt; id ) 
+Referred by video_comentario_like ( usuario_id -&gt; id ) 
+Referred by video_dislikes ( usuario_id -&gt; id ) 
+Referred by video ( usuario_id -&gt; id ) 
+Referred by video_likes ( usuario_id -&gt; id ) </title></a>
+  <use id='nn' x='258' y='93' xlink:href='#nn'/><use id='unq' x='258' y='92' xlink:href='#unq'><title>Unq email ( email ) </title></use><text id='youtube.usuario.email' x='275' y='103'>email</text><title>email
+* varchar(50)</title><text x='381' y='100' text-anchor='end' class='colType'>t</text>  <use id='nn' x='258' y='109' xlink:href='#nn'/><text id='youtube.usuario.password' x='275' y='119'>password</text><title>password
+* varchar(10)</title><text x='381' y='116' text-anchor='end' class='colType'>t</text>  <use id='nn' x='258' y='125' xlink:href='#nn'/><text id='youtube.usuario.nombre' x='275' y='135'>nombre</text><title>nombre
+* varchar(50)</title><text x='381' y='132' text-anchor='end' class='colType'>t</text>  <use id='nn' x='258' y='141' xlink:href='#nn'/><text id='youtube.usuario.nacimiento' x='275' y='151'>nacimiento</text><title>nacimiento
+* date</title><text x='381' y='148' text-anchor='end' class='colType'>d</text>  <use id='nn' x='258' y='157' xlink:href='#nn'/><text id='youtube.usuario.sexo' x='275' y='167'>sexo</text><title>sexo
+* varchar(1)</title><text x='381' y='164' text-anchor='end' class='colType'>t</text>  <use id='nn' x='258' y='173' xlink:href='#nn'/><text id='youtube.usuario.pais' x='275' y='183'>pais</text><title>pais
+* varchar(25)</title><text x='381' y='180' text-anchor='end' class='colType'>t</text>  <use id='nn' x='258' y='189' xlink:href='#nn'/><text id='youtube.usuario.cp' x='275' y='199'>cp</text><title>cp
+* smallint</title><text x='381' y='196' text-anchor='end' class='colType'>#</text>
+<!-- == Table 'usuario_suscripciones' == -->
+<rect id='depict_youtube.usuario_suscripciones' class='entity' style='stroke:none;' x='464' y='312' width='176' height='80' rx='8' ry='8' />
+<path d='M 464 340 L 464 320 Q 464 312 472 312 L 632 312 Q 640 312 640 320 L 640 340 L464 340 ' style='fill:url(#tbg_C7F4BE);stroke-width:0;' />
+<rect class='entity' x='464' y='312' width='176' height='80' rx='8' ry='8' style='fill:none;stroke:#CFE8CB'/>
+<a xlink:href='#youtube.usuario_suscripciones'><text x='471' y='331' >usuario_suscripciones</text><title>Table youtube.usuario_suscripciones</title></a>
+  <use id='nn' x='466' y='349' xlink:href='#nn'/><use id='pk' x='466' y='348' xlink:href='#pk'><title>Pk pk_usuario_suscripciones ( usuario_id, canal_id ) </title></use><text id='youtube.usuario_suscripciones.usuario_id' x='483' y='359' onmouseover="hghl(['usuario_suscripciones_usuario_suscripciones_ibfk_1','youtube.usuario.id'])" onmouseout="uhghl(['usuario_suscripciones_usuario_suscripciones_ibfk_1','youtube.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#youtube.usuario_suscripciones'><use id='fk' x='628' y='348' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+  <use id='nn' x='466' y='365' xlink:href='#nn'/><use id='pk' x='466' y='364' xlink:href='#pk'><title>Pk pk_usuario_suscripciones ( usuario_id, canal_id ) canal_id ( canal_id ) </title></use><text id='youtube.usuario_suscripciones.canal_id' x='483' y='375' onmouseover="hghl(['usuario_suscripciones_usuario_suscripciones_ibfk_2','youtube.canal.id'])" onmouseout="uhghl(['usuario_suscripciones_usuario_suscripciones_ibfk_2','youtube.canal.id'])">canal_id</text><title>canal_id
+* int</title><a xlink:href='#youtube.usuario_suscripciones'><use id='fk' x='628' y='364' xlink:href='#fk'/><title>References canal ( canal_id -&gt; id ) </title></a>
+
+<!-- == Table 'video' == -->
+<rect id='depict_youtube.video' class='entity' style='stroke:none;' x='752' y='40' width='160' height='256' rx='8' ry='8' />
+<path d='M 752 68 L 752 48 Q 752 40 760 40 L 904 40 Q 912 40 912 48 L 912 68 L752 68 ' style='fill:url(#tbg_BED3F4);stroke-width:0;' />
+<rect class='entity' x='752' y='40' width='160' height='256' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#youtube.video'><text x='809' y='59' >video</text><title>Table youtube.video</title></a>
+  <use id='nn' x='754' y='77' xlink:href='#nn'/><use id='pk' x='754' y='76' xlink:href='#pk'><title>Pk pk_video ( id ) </title></use><text id='youtube.video.id' x='771' y='87' onmouseover="hghl(['playlist_item_playlist_item_ibfk_2','youtube.playlist_item.video_id','video_comentario_video_comentario_ibfk_2','youtube.video_comentario.video_id','video_dislikes_video_dislikes_ibfk_1','youtube.video_dislikes.video_id','video_etiqueta_video_etiqueta_ibfk_1','youtube.video_etiqueta.video_id','video_likes_video_likes_ibfk_1','youtube.video_likes.video_id'])" onmouseout="uhghl(['playlist_item_playlist_item_ibfk_2','youtube.playlist_item.video_id','video_comentario_video_comentario_ibfk_2','youtube.video_comentario.video_id','video_dislikes_video_dislikes_ibfk_1','youtube.video_dislikes.video_id','video_etiqueta_video_etiqueta_ibfk_1','youtube.video_etiqueta.video_id','video_likes_video_likes_ibfk_1','youtube.video_likes.video_id'])">id</text><title>id
+* int</title><a xlink:href='#youtube.video'><use id='ref' x='900' y='76' xlink:href='#ref'/><title>Referred by playlist_item ( video_id -&gt; id ) 
+Referred by video_comentario ( video_id -&gt; id ) 
+Referred by video_dislikes ( video_id -&gt; id ) 
+Referred by video_etiqueta ( video_id -&gt; id ) 
+Referred by video_likes ( video_id -&gt; id ) </title></a>
+  <use id='nn' x='754' y='93' xlink:href='#nn'/><text id='youtube.video.titulo' x='771' y='103'>titulo</text><title>titulo
+* varchar(250)</title><text x='909' y='100' text-anchor='end' class='colType'>t</text>  <use id='nn' x='754' y='109' xlink:href='#nn'/><text id='youtube.video.descripcion' x='771' y='119'>descripcion</text><title>descripcion
+* varchar(1000)</title><text x='909' y='116' text-anchor='end' class='colType'>t</text>  <use id='nn' x='754' y='125' xlink:href='#nn'/><text id='youtube.video.tamano' x='771' y='135'>tamano</text><title>tamano
+* bigint
+max 18446744073709551615</title><text x='909' y='132' text-anchor='end' class='colType'>#</text>  <use id='nn' x='754' y='141' xlink:href='#nn'/><text id='youtube.video.nombre_fichero' x='771' y='151'>nombre_fichero</text><title>nombre_fichero
+* varchar(250)</title><text x='909' y='148' text-anchor='end' class='colType'>t</text>  <use id='nn' x='754' y='157' xlink:href='#nn'/><text id='youtube.video.duracion' x='771' y='167'>duracion</text><title>duracion
+* time</title>  <use id='nn' x='754' y='173' xlink:href='#nn'/><text id='youtube.video.thumbnail_url' x='771' y='183'>thumbnail_url</text><title>thumbnail_url
+* varchar(250)
+no es buena idea almacenarlo en la base por tema de rendimiento</title><text x='909' y='180' text-anchor='end' class='colType'>t</text>  <use id='nn' x='754' y='189' xlink:href='#nn'/><text id='youtube.video.reproducciones' x='771' y='199'>reproducciones</text><title>reproducciones
+* int
+max 4294967295</title><text x='909' y='196' text-anchor='end' class='colType'>#</text>  <use id='nn' x='754' y='205' xlink:href='#nn'/><text id='youtube.video.likes' x='771' y='215'>likes</text><title>likes
+* int
+max 4294967295</title><text x='909' y='212' text-anchor='end' class='colType'>#</text>  <use id='nn' x='754' y='221' xlink:href='#nn'/><text id='youtube.video.dislikes' x='771' y='231'>dislikes</text><title>dislikes
+* int
+max 4294967295</title><text x='909' y='228' text-anchor='end' class='colType'>#</text>  <use id='nn' x='754' y='237' xlink:href='#nn'/><use id='idx' x='754' y='236' xlink:href='#idx'><title>estado_id ( estado ) </title></use><text id='youtube.video.estado' x='771' y='247'>estado</text><title>estado
+* tinyint
+0 = públic / 1 = ocult / 2 = privat - Veo innecesario otra tabla</title><text x='909' y='244' text-anchor='end' class='colType'>#</text>  <use id='nn' x='754' y='253' xlink:href='#nn'/><use id='idx' x='754' y='252' xlink:href='#idx'><title>usuario_id ( usuario_id ) </title></use><text id='youtube.video.usuario_id' x='771' y='263' onmouseover="hghl(['video_video_ibfk_1','youtube.usuario.id'])" onmouseout="uhghl(['video_video_ibfk_1','youtube.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#youtube.video'><use id='fk' x='900' y='252' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+  <use id='nn' x='754' y='269' xlink:href='#nn'/><text id='youtube.video.publicacion' x='771' y='279'>publicacion</text><title>publicacion
+* datetime default &apos;0000-00-00 00:00:00&apos;</title><text x='909' y='276' text-anchor='end' class='colType'>d</text>
+<!-- == Table 'video_comentario' == -->
+<rect id='depict_youtube.video_comentario' class='entity' style='stroke:none;' x='992' y='40' width='144' height='128' rx='8' ry='8' />
+<path d='M 992 68 L 992 48 Q 992 40 1000 40 L 1128 40 Q 1136 40 1136 48 L 1136 68 L992 68 ' style='fill:url(#tbg_BED3F4);stroke-width:0;' />
+<rect class='entity' x='992' y='40' width='144' height='128' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#youtube.video_comentario'><text x='997' y='59' >video_comentario</text><title>Table youtube.video_comentario</title></a>
+  <use id='nn' x='994' y='77' xlink:href='#nn'/><use id='pk' x='994' y='76' xlink:href='#pk'><title>Pk pk_video_comentario ( id ) </title></use><text id='youtube.video_comentario.id' x='1011' y='87' onmouseover="hghl(['video_comentario_dislike_video_comentario_dislike_ibfk_2','youtube.video_comentario_dislike.video_comentario_id','video_comentario_like_video_comentario_like_ibfk_1','youtube.video_comentario_like.video_comentario_id'])" onmouseout="uhghl(['video_comentario_dislike_video_comentario_dislike_ibfk_2','youtube.video_comentario_dislike.video_comentario_id','video_comentario_like_video_comentario_like_ibfk_1','youtube.video_comentario_like.video_comentario_id'])">id</text><title>id
+* int</title><a xlink:href='#youtube.video_comentario'><use id='ref' x='1124' y='76' xlink:href='#ref'/><title>Referred by video_comentario_dislike ( video_comentario_id -&gt; id ) 
+Referred by video_comentario_like ( video_comentario_id -&gt; id ) </title></a>
+  <use id='nn' x='994' y='93' xlink:href='#nn'/><use id='idx' x='994' y='92' xlink:href='#idx'><title>video_id ( video_id ) </title></use><text id='youtube.video_comentario.video_id' x='1011' y='103' onmouseover="hghl(['video_comentario_video_comentario_ibfk_2','youtube.video.id'])" onmouseout="uhghl(['video_comentario_video_comentario_ibfk_2','youtube.video.id'])">video_id</text><title>video_id
+* int</title><a xlink:href='#youtube.video_comentario'><use id='fk' x='1124' y='92' xlink:href='#fk'/><title>References video ( video_id -&gt; id ) </title></a>
+  <use id='nn' x='994' y='109' xlink:href='#nn'/><use id='idx' x='994' y='108' xlink:href='#idx'><title>usuario_id ( usuario_id ) </title></use><text id='youtube.video_comentario.usuario_id' x='1011' y='119' onmouseover="hghl(['video_comentario_video_comentario_ibfk_3','youtube.usuario.id'])" onmouseout="uhghl(['video_comentario_video_comentario_ibfk_3','youtube.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#youtube.video_comentario'><use id='fk' x='1124' y='108' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+  <use id='nn' x='994' y='125' xlink:href='#nn'/><text id='youtube.video_comentario.fecha' x='1011' y='135'>fecha</text><title>fecha
+* datetime default &apos;0000-00-00 00:00:00&apos;</title><text x='1133' y='132' text-anchor='end' class='colType'>d</text>  <use id='nn' x='994' y='141' xlink:href='#nn'/><text id='youtube.video_comentario.texto' x='1011' y='151'>texto</text><title>texto
+* varchar(250)</title><text x='1133' y='148' text-anchor='end' class='colType'>t</text>
+<!-- == Table 'video_comentario_dislike' == -->
+<rect id='depict_youtube.video_comentario_dislike' class='entity' style='stroke:none;' x='1216' y='40' width='192' height='96' rx='8' ry='8' />
+<path d='M 1216 68 L 1216 48 Q 1216 40 1224 40 L 1400 40 Q 1408 40 1408 48 L 1408 68 L1216 68 ' style='fill:url(#tbg_BED3F4);stroke-width:0;' />
+<rect class='entity' x='1216' y='40' width='192' height='96' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#youtube.video_comentario_dislike'><text x='1219' y='59' >video_comentario_dislike</text><title>Table youtube.video_comentario_dislike</title></a>
+  <use id='nn' x='1218' y='77' xlink:href='#nn'/><use id='pk' x='1218' y='76' xlink:href='#pk'><title>Pk pk_video_comentario_dislike ( video_comentario_id, usuario_id ) </title></use><text id='youtube.video_comentario_dislike.video_comentario_id' x='1235' y='87' onmouseover="hghl(['video_comentario_dislike_video_comentario_dislike_ibfk_2','youtube.video_comentario.id'])" onmouseout="uhghl(['video_comentario_dislike_video_comentario_dislike_ibfk_2','youtube.video_comentario.id'])">video_comentario_id</text><title>video_comentario_id
+* int</title><a xlink:href='#youtube.video_comentario_dislike'><use id='fk' x='1396' y='76' xlink:href='#fk'/><title>References video_comentario ( video_comentario_id -&gt; id ) </title></a>
+  <use id='nn' x='1218' y='93' xlink:href='#nn'/><use id='pk' x='1218' y='92' xlink:href='#pk'><title>Pk pk_video_comentario_dislike ( video_comentario_id, usuario_id ) usuario_id ( usuario_id ) </title></use><text id='youtube.video_comentario_dislike.usuario_id' x='1235' y='103' onmouseover="hghl(['video_comentario_dislike_video_comentario_dislike_ibfk_3','youtube.usuario.id'])" onmouseout="uhghl(['video_comentario_dislike_video_comentario_dislike_ibfk_3','youtube.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#youtube.video_comentario_dislike'><use id='fk' x='1396' y='92' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+  <use id='nn' x='1218' y='109' xlink:href='#nn'/><text id='youtube.video_comentario_dislike.fecha' x='1235' y='119'>fecha</text><title>fecha
+* datetime default &apos;0000-00-00 00:00:00&apos;</title><text x='1405' y='116' text-anchor='end' class='colType'>d</text>
+<!-- == Table 'video_comentario_like' == -->
+<rect id='depict_youtube.video_comentario_like' class='entity' style='stroke:none;' x='1216' y='264' width='192' height='96' rx='8' ry='8' />
+<path d='M 1216 292 L 1216 272 Q 1216 264 1224 264 L 1400 264 Q 1408 264 1408 272 L 1408 292 L1216 292 ' style='fill:url(#tbg_BED3F4);stroke-width:0;' />
+<rect class='entity' x='1216' y='264' width='192' height='96' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#youtube.video_comentario_like'><text x='1229' y='283' >video_comentario_like</text><title>Table youtube.video_comentario_like</title></a>
+  <use id='nn' x='1218' y='301' xlink:href='#nn'/><use id='pk' x='1218' y='300' xlink:href='#pk'><title>Pk pk_video_comentario_like ( video_comentario_id, usuario_id ) </title></use><text id='youtube.video_comentario_like.video_comentario_id' x='1235' y='311' onmouseover="hghl(['video_comentario_like_video_comentario_like_ibfk_1','youtube.video_comentario.id'])" onmouseout="uhghl(['video_comentario_like_video_comentario_like_ibfk_1','youtube.video_comentario.id'])">video_comentario_id</text><title>video_comentario_id
+* int</title><a xlink:href='#youtube.video_comentario_like'><use id='fk' x='1396' y='300' xlink:href='#fk'/><title>References video_comentario ( video_comentario_id -&gt; id ) </title></a>
+  <use id='nn' x='1218' y='317' xlink:href='#nn'/><use id='pk' x='1218' y='316' xlink:href='#pk'><title>Pk pk_video_comentario_like ( video_comentario_id, usuario_id ) usuario_id ( usuario_id ) </title></use><text id='youtube.video_comentario_like.usuario_id' x='1235' y='327' onmouseover="hghl(['video_comentario_like_video_comentario_like_ibfk_2','youtube.usuario.id'])" onmouseout="uhghl(['video_comentario_like_video_comentario_like_ibfk_2','youtube.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#youtube.video_comentario_like'><use id='fk' x='1396' y='316' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+  <use id='nn' x='1218' y='333' xlink:href='#nn'/><text id='youtube.video_comentario_like.fecha' x='1235' y='343'>fecha</text><title>fecha
+* datetime default &apos;0000-00-00 00:00:00&apos;</title><text x='1405' y='340' text-anchor='end' class='colType'>d</text>
+<!-- == Table 'video_dislikes' == -->
+<rect id='depict_youtube.video_dislikes' class='entity' style='stroke:none;' x='752' y='392' width='112' height='96' rx='8' ry='8' />
+<path d='M 752 420 L 752 400 Q 752 392 760 392 L 856 392 Q 864 392 864 400 L 864 420 L752 420 ' style='fill:url(#tbg_BED3F4);stroke-width:0;' />
+<rect class='entity' x='752' y='392' width='112' height='96' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#youtube.video_dislikes'><text x='755' y='411' >video_dislikes</text><title>Table youtube.video_dislikes</title></a>
+  <use id='nn' x='754' y='429' xlink:href='#nn'/><use id='pk' x='754' y='428' xlink:href='#pk'><title>Pk pk_video_dislikes ( video_id, usuario_id ) </title></use><text id='youtube.video_dislikes.video_id' x='771' y='439' onmouseover="hghl(['video_dislikes_video_dislikes_ibfk_1','youtube.video.id'])" onmouseout="uhghl(['video_dislikes_video_dislikes_ibfk_1','youtube.video.id'])">video_id</text><title>video_id
+* int</title><a xlink:href='#youtube.video_dislikes'><use id='fk' x='852' y='428' xlink:href='#fk'/><title>References video ( video_id -&gt; id ) </title></a>
+  <use id='nn' x='754' y='445' xlink:href='#nn'/><use id='pk' x='754' y='444' xlink:href='#pk'><title>Pk pk_video_dislikes ( video_id, usuario_id ) usuario_id ( usuario_id ) </title></use><text id='youtube.video_dislikes.usuario_id' x='771' y='455' onmouseover="hghl(['video_dislikes_video_dislikes_ibfk_2','youtube.usuario.id'])" onmouseout="uhghl(['video_dislikes_video_dislikes_ibfk_2','youtube.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#youtube.video_dislikes'><use id='fk' x='852' y='444' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+  <use id='nn' x='754' y='461' xlink:href='#nn'/><text id='youtube.video_dislikes.fecha' x='771' y='471'>fecha</text><title>fecha
+* datetime default &apos;0000-00-00 00:00:00&apos;</title><text x='861' y='468' text-anchor='end' class='colType'>d</text>
+<!-- == Table 'video_etiqueta' == -->
+<rect id='depict_youtube.video_etiqueta' class='entity' style='stroke:none;' x='992' y='392' width='128' height='80' rx='8' ry='8' />
+<path d='M 992 420 L 992 400 Q 992 392 1000 392 L 1112 392 Q 1120 392 1120 400 L 1120 420 L992 420 ' style='fill:url(#tbg_BED3F4);stroke-width:0;' />
+<rect class='entity' x='992' y='392' width='128' height='80' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#youtube.video_etiqueta'><text x='1000' y='411' >video_etiqueta</text><title>Table youtube.video_etiqueta</title></a>
+  <use id='nn' x='994' y='429' xlink:href='#nn'/><use id='pk' x='994' y='428' xlink:href='#pk'><title>Pk pk_video_etiqueta ( video_id, etiqueta_id ) </title></use><text id='youtube.video_etiqueta.video_id' x='1011' y='439' onmouseover="hghl(['video_etiqueta_video_etiqueta_ibfk_1','youtube.video.id'])" onmouseout="uhghl(['video_etiqueta_video_etiqueta_ibfk_1','youtube.video.id'])">video_id</text><title>video_id
+* int</title><a xlink:href='#youtube.video_etiqueta'><use id='fk' x='1108' y='428' xlink:href='#fk'/><title>References video ( video_id -&gt; id ) </title></a>
+  <use id='nn' x='994' y='445' xlink:href='#nn'/><use id='pk' x='994' y='444' xlink:href='#pk'><title>Pk pk_video_etiqueta ( video_id, etiqueta_id ) etiqueta_id ( etiqueta_id ) </title></use><text id='youtube.video_etiqueta.etiqueta_id' x='1011' y='455' onmouseover="hghl(['video_etiqueta_video_etiqueta_ibfk_2','youtube.etiqueta.id'])" onmouseout="uhghl(['video_etiqueta_video_etiqueta_ibfk_2','youtube.etiqueta.id'])">etiqueta_id</text><title>etiqueta_id
+* int</title><a xlink:href='#youtube.video_etiqueta'><use id='fk' x='1108' y='444' xlink:href='#fk'/><title>References etiqueta ( etiqueta_id -&gt; id ) </title></a>
+
+<!-- == Table 'video_likes' == -->
+<rect id='depict_youtube.video_likes' class='entity' style='stroke:none;' x='256' y='312' width='112' height='96' rx='8' ry='8' />
+<path d='M 256 340 L 256 320 Q 256 312 264 312 L 360 312 Q 368 312 368 320 L 368 340 L256 340 ' style='fill:url(#tbg_C7F4BE);stroke-width:0;' />
+<rect class='entity' x='256' y='312' width='112' height='96' rx='8' ry='8' style='fill:none;stroke:#CFE8CB'/>
+<a xlink:href='#youtube.video_likes'><text x='269' y='331' >video_likes</text><title>Table youtube.video_likes</title></a>
+  <use id='nn' x='258' y='349' xlink:href='#nn'/><use id='pk' x='258' y='348' xlink:href='#pk'><title>Pk pk_video_likes ( video_id, usuario_id ) </title></use><text id='youtube.video_likes.video_id' x='275' y='359' onmouseover="hghl(['video_likes_video_likes_ibfk_1','youtube.video.id'])" onmouseout="uhghl(['video_likes_video_likes_ibfk_1','youtube.video.id'])">video_id</text><title>video_id
+* int</title><a xlink:href='#youtube.video_likes'><use id='fk' x='356' y='348' xlink:href='#fk'/><title>References video ( video_id -&gt; id ) </title></a>
+  <use id='nn' x='258' y='365' xlink:href='#nn'/><use id='pk' x='258' y='364' xlink:href='#pk'><title>Pk pk_video_likes ( video_id, usuario_id ) usuario_id ( usuario_id ) </title></use><text id='youtube.video_likes.usuario_id' x='275' y='375' onmouseover="hghl(['video_likes_video_likes_ibfk_2','youtube.usuario.id'])" onmouseout="uhghl(['video_likes_video_likes_ibfk_2','youtube.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#youtube.video_likes'><use id='fk' x='356' y='364' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+  <use id='nn' x='258' y='381' xlink:href='#nn'/><text id='youtube.video_likes.fecha' x='275' y='391'>fecha</text><title>fecha
+* datetime default &apos;0000-00-00 00:00:00&apos;</title><text x='365' y='388' text-anchor='end' class='colType'>d</text>
+</g></svg>

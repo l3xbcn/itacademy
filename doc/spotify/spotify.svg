@@ -1,0 +1,592 @@
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   width='1392' height='974' viewBox='0 0 1392 974' >
+  <script type='text/ecmascript'>
+  <![CDATA[
+  function hghl(el) { for ( var i in el ){ var elem = document.getElementById(el[i]); if ( elem != null ) elem.setAttribute('class','highlight');  }  }
+  function uhghl(el) { for ( var i in el ){ var elem = document.getElementById(el[i]); if ( elem != null ) elem.setAttribute('class','unhighlight'); }  } 
+  ]]>
+  </script> 
+
+<style type='text/css'>
+  text                { fill:#000000; font-family: System, 'Trebuchet MS', Dialog; font-size:14.083333015441895px; }
+  a text:hover        { fill:#0d196f; text-shadow: 0px 0px 6px #d0ce00; font-size:13px; font-weight: bold;}
+  text.highlight      { fill:#0d196f; text-shadow: 0px 0px 4px #eac533; font-size:13px; font-weight: bold;}
+  text.white          { fill:#ffffff; }
+  text.colType        { fill:#b3b3b3; }
+  text.relName        { fill:#9c9a9a; }
+  text.legendTitle    { fill:#d65c68; font-weight:bold; }
+  text.legendSubTitle { fill:#717171; font-size:11px; }
+  path                { stroke:#928c7e; stroke-width:1.25; fill:none; }
+  path.virtual        { stroke:#a364b5; }
+  path.logo           { fill:#fbeac0;fill-opacity:1;stroke-width:0.3;stroke:#222222; }
+  path.dotted         { stroke-dasharray:4,2; }
+  path.unhighlight    { stroke-width:10; opacity:0; }
+  path.highlight      { stroke-width:3; stroke:#0054c5; opacity:0.8; }
+  path.line           { stroke-width:10; stroke-linecap:round; stroke-linejoin:round; }
+  rect.entity         { fill:#ffffff; stroke:#777; stroke-width:0;shape-rendering:crispEdges; filter:url(#shadow); }
+  line.delim          { stroke-width:1; shape-rendering:crispEdges; }
+  text.callout        { fill:#000000; font-family: System, 'Trebuchet MS', Dialog; font-size:14.625px; }
+  rect.callout        { fill:url(#calloutGradient); stroke:#bebdbd; stroke-width:0.5; }
+  rect.shape          { stroke:#bebdbd; stroke-width:0.5; }
+  rect.grp            { stroke:#a1a1a1; stroke-width:3; opacity:0.35; }
+  path.bgPattern      { fill:none;stroke-width:0.6;stroke:#e5e9ed; }
+  rect.palpable       { fill:#fffbe5; }
+</style>
+<defs>
+  <radialGradient id='layoutBgB' cx='100%' cy='100%' r='100%'  >
+    <stop offset='0%' stop-color='#dfdfdf' />
+    <stop offset='100%' stop-color='#f2f2f2' />
+  </radialGradient>
+  <pattern id="layoutBgA" width="60" height="34.64" patternUnits="userSpaceOnUse">
+    <rect width="100%" height="100%" fill="#f5f5f5" />
+    <path class='bgPattern' d='M 0 17.32 L 10 0 L 30 0 L 40 17.326 L 30 34.64 L 10 34.64 Z' />
+    <path class='bgPattern' d='M 40 17.32 L 60 17.32 Z' />
+  </pattern>
+  <!-- https://norbat.de/svg-pattern-3d-webmuster/ -->
+  <linearGradient id='groupUnderTitleLine' x1='0%' y1='0%' x2='100%' y2='0%' >
+    <stop offset='0%' stop-color='#999999' stop-opacity='0.7'/>
+    <stop offset='100%' stop-color='#999999' stop-opacity='0' />
+  </linearGradient>
+  <radialGradient id='calloutGradient' cx='25%' cy='20%' r='80%' fx='10%' fy='10%'>
+    <stop offset='0%' stop-color='#ffffff' />
+    <stop offset='100%' stop-color='#f8f6d1' />
+  </radialGradient>
+  <filter id="shadow" width="120%" height="120%">
+    <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#333" flood-opacity="0.2" />
+  </filter>
+  <!--
+  <filter id='shadow2' width='120%' height='120%'>
+    <feOffset result='offOut' in='SourceGraphic' dx='0' dy='0' />
+    <feColorMatrix result='matrixOut' in='offOut'
+                   values='0.5 0 0 0 0 0 0.5 0 0 0 0 0 0.5 0 0 0 0 0 0.5 0' />
+    <feGaussianBlur result='blurOut' in='matrixOut' stdDeviation='3' />
+    <feBlend in='SourceGraphic' in2='blurOut' />
+  </filter>
+  -->
+  <filter id='fkShadow' height='130%'>
+    <feGaussianBlur in='SourceAlpha' stdDeviation='1.5'/> <!-- stdDeviation is how much to blur -->
+    <feOffset dx='1.2' dy='1.2' result='offsetblur'/> <!-- how much to offset -->
+    <feMerge>
+      <feMergeNode/> <!-- this contains the offset blurred image -->
+      <feMergeNode in='SourceGraphic'/> <!-- this contains the element that the filter is applied to -->
+    </feMerge>
+  </filter>
+  <radialGradient id='legendGradient' cx='5%' cy='5%' r='100%' >
+    <stop offset='0%' stop-color='#e4eeff' stop-opacity='1'/>
+    <stop offset='100%' stop-color='#c3d2ea' stop-opacity='1' />
+  </radialGradient>
+  <symbol id='calloutArrowDown' >
+    <path d='M 0,0 L 8,12 L 16,0 z' style='fill:#f8f6d1;stroke:none; filter: url(#shadow);' />
+    <path d='M 0,0 L 8,12 L 16,0' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='calloutArrowUp' >
+    <path d='M 0,16 L 8,4 L 16,16 z' style='fill:#ffffff; stroke:none; filter: url(#shadow);' />
+    <path d='M 0,16 L 8,4 L 16,16' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='pk' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <path style='fill:#f0d938;stroke:#906b25;stroke-width:0.6;stroke-linecap:round;stroke-linejoin:round;'
+            d='M 9.3678877,3.5695485 C 9.1030218,3.2729386 9.0796382,2.7628519 9.3396185,2.4517097 9.5449651,2.1956495 9.9040386,2.0980533 10.199638,2.2169415 10.533525,2.3415459 10.775153,2.706942 10.750675,3.0842709 10.737029,3.3980003 10.541153,3.699122 10.258248,3.8066067 9.966649,3.9250429 9.6169668,3.8418805 9.4008073,3.6062324 9.3894892,3.5943518 9.3785264,3.582104 9.3678886,3.5695487 z M 11.226617,6.9916004 C 11.888137,6.3548946 12.293488,5.4172188 12.311087,4.442353 12.378144,2.7379364 11.248678,1.0541269 9.7322318,0.44767357 8.3887112,-0.1280313 6.7865012,0.26822889 5.8918395,1.4007929 5.080823,2.3839145 4.9336815,3.8452096 5.3635544,5.101615 L 4.3670905,5.315913 C 4.0664984,5.3682645 4.0967703,5.6316724 4.2574957,5.8208829 L 4.9124,6.5655244 4.1543436,7.2512357 3.2136002,7.2163506 3.1674775,8.5586827 2.0406832,8.5086512 1.5965306,8.9299953 1.5471661,10.179833 0.75616674,10.195223 0.2112857,10.758575 0.15354288,11.735988 0.07199052,12.765553 c 0.36440953,0.238225 0.79006967,0.195492 1.44938278,-0.02675 L 6.3033562,8.1282037 6.8217102,8.6765688 C 6.9985465,8.8799427 7.3003699,8.7497574 7.358381,8.5016252 L 7.4938877,7.5084164 c 0.8537488,0.3985387 1.8303125,0.4711541 2.6851793,0.1427713 0.393927,-0.1407258 0.746858,-0.3701772 1.04755,-0.6595873 z'/>
+      <path d='M 6.8014948,6.3102123 0.15369063,13.024481 0.21560535,12.141962 6.0062342,6.2683782 z'
+            style='fill:#ffe5a5;fill-opacity:1;stroke:#906b25;stroke-width:0.06912433;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:3.00300009'/>
+    </g>
+  </symbol>
+  <symbol id='idx1' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <rect width='4' height='4' x='7' y='1' style='fill:#ffff3f;stroke:#b48333;stroke-width:0.6;' ry='0.83'/>
+      <rect width='4' height='4' x='1' y='7' style='fill:#ffff3f;stroke:#b48333;stroke-width:0.6;' ry='0.832'/>
+      <rect width='4' height='4' x='7' y='7' style='fill:#ffff3f;stroke:#b48333;stroke-width:0.6;' ry='0.832'/>
+    </g>
+  </symbol>
+  <symbol id='idx2' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <rect width='4' height='3' x='6' y='1' style='fill:#7fc8e9;stroke:#2f6f8c;stroke-width:0.6;' ry='0.83'/>
+      <rect width='7' height='3' x='3' y='6' style='fill:#7fc8e9;stroke:#2f6f8c;stroke-width:0.6;' ry='0.832'/>
+    </g>
+  </symbol>
+  <symbol id='unq' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <rect style='fill:none;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+            width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+            transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+      <text x='5.8' y='7.4' style='font-size:7px;fill:#8a8a8a;'>1</text>
+    </g>
+  </symbol>
+  <symbol id='idx' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <rect style='fill:none;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+            width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+            transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+    </g>
+  </symbol>
+  <symbol id='fk' width="13" height="13">
+    <g transform='scale(0.87)'>
+      <path style='fill:#6a88cd;stroke:#5a72a8;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 12.48,0.33 7.07,0.89 9.067,2.974 0.329,11.731 1.073,12.597 9.811,3.841 11.77,5.78 z' />
+    </g>
+  </symbol>
+  <symbol id='ref' width="13" height="13">
+    <g transform='scale(0.87)'>
+      <path style='fill:#f0d938;stroke:#906b25;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 0.10,12.70 5.31,12.15 3.40,10.06 11.82,1.32 11.11,0.45 2.68,9.19 0.80,7.24 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag0' width="13" height="13">
+    <g transform='scale(0.92)'>
+      <path style='fill:#b7d0f6;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag1' width="13" height="13">
+    <g transform='scale(0.92)'>
+      <path style='fill:#f4a393;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag2' width="13" height="13">
+    <g transform='scale(0.92)'>
+      <path style='fill:#77ec8b;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='nn' width="3" height="3">
+    <path style='stroke:#9b3e50;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0,0 3,3 M 0,3 3,0 z'/>
+  </symbol>
+  <symbol id='virtual' width="13" height="13">
+    <circle cx='6' cy='6.5' r='5.5' fill='#a3dda3' stroke='#4c6a4c' stroke-width='0.5'/>
+    <path style='stroke:#ffffff;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 3,4 6,10 9,4'/>
+  </symbol>
+  <symbol id='view' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <line x1='12' y1='6' x2='19' y2='0' stroke='black' stroke-width='0.5' />
+      <line x1='0' y1='6' x2='7' y2='0' stroke='black' stroke-width='0.5' />
+      <circle cx='3' cy='6' r='3' fill='#f9ebbc' stroke='black' stroke-width='0.5'/>
+      <circle cx='10' cy='6' r='3' fill='#f9ebbc' stroke='black' stroke-width='0.5'/>
+    </g>
+  </symbol>
+
+</defs>
+
+<defs>  <marker id='arrow0u' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 8.000,4.000 L 16.000,4.000 L 8.000,0.000 L 16.000,4.000 L 8.000,8.000' />
+  </marker>
+  <marker id='arrow1u' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 8.000,4.000 L 16.000,4.000 L 8.000,0.000 L 16.000,4.000 L 8.000,8.000' />
+  </marker>
+  <marker id='arrow0' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <circle cx='4.00' cy='4.00' r='2.67' style='fill:white;stroke:#5e554d;' />
+    <path d='M 16.00,0.00 L 8.00,4.00 L 16.00,8.00' />
+  </marker>
+  <marker id='arrow1' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <path d='M 16.00,0.00 L 8.00,4.00 L 16.00,8.00' />
+  </marker>
+  <marker id='foot0u' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <circle cx='12.00' cy='4.00' r='2.67' style='fill:white;stroke:#5e554d;' />
+    <path d='M 4.00,0.00 L 4.00, 8.00 z' />
+  </marker>
+  <marker id='foot0' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <circle cx='12.00' cy='4.00' r='2.67' style='fill:white;stroke:#5e554d;' />
+    <path d='M 0.00,0.00 L 8.00,4.00 L 0.00,8.00' />
+  </marker>
+  <marker id='foot1u' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <path d='M 8.00,0.00 L 8.00, 8.00 z' />
+    <path d='M 4.00,0.00 L 4.00, 8.00 z' />
+  </marker>
+  <marker id='foot1' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <path d='M 8.00,0.00 L 8.00, 8.00 z' />
+    <path d='M 0.00,0.00 L 8.00,4.00 L 0.00,8.00' />
+  </marker>
+  <marker id='line_arrow' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 8.000,4.000 L 16.000,4.000 L 8.000,0.000 L 16.000,4.000 L 8.000,8.000' />
+  </marker>
+  <marker id='line_straight' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+  </marker>
+  <linearGradient id='tbg_F4DDBE' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#FFF5EA' /> 
+     <stop offset='40%' stop-color='#E2D7C9' /> 
+     <stop offset='100%' stop-color='#FFF4E7' /> 
+  </linearGradient>
+  <linearGradient id='tbg_BED3F4' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#EAF2FF' /> 
+     <stop offset='40%' stop-color='#C9D2E2' /> 
+     <stop offset='100%' stop-color='#E7F0FF' /> 
+  </linearGradient>
+  <linearGradient id='tbg_C7F4BE' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#EDFFEA' /> 
+     <stop offset='40%' stop-color='#CDE2C9' /> 
+     <stop offset='100%' stop-color='#EBFFE7' /> 
+  </linearGradient>
+</defs>
+
+<!-- == Shape Colors == -->
+<!-- == Desktop == -->
+<rect x='1' y='1' width='1390' height='972' rx='8' ry='8' style='fill:url(#layoutBgA); stroke:#aaa; stroke-width:1px;' />
+<rect x='1' y='1' width='1390' height='972' rx='8' ry='8' style='fill:url(#layoutBgTr);' />
+
+<!-- == Legend == -->
+<g transform='translate(10,10)'>
+  <rect x='10' y='10' width='420' height='70' rx='6' ry='6' style='fill:url(#legendGradient);filter:url(#shadow);'/> 
+  <text x='20' y='25' class='legendTitle' >spotify</text> 
+  <a xlink:href='https://dbschema.com'><text x='20' y='39' class='legendSubTitle'><tspan>(c) DbSchema</tspan></text></a> 
+  <text x='20' y='53' class='legendSubTitle'><tspan>Read table and column comments as mouse-over tooltips.</tspan></text> 
+  <text x='20' y='67' class='legendSubTitle'><tspan>Zoom ~ Ctrl + mouse wheel, panning ~ drag + right-mouse button.</tspan></text> 
+</g>
+
+<g transform='translate(0,110)'>
+<!-- == Fk 'album_album_ibfk_1' == -->
+<path id='album_album_ibfk_1'  onmouseover="hghl(['album_album_ibfk_1','spotify.album.artista_id','spotify.artista.id'])" onmouseout="uhghl(['album_album_ibfk_1','spotify.album.artista_id','spotify.artista.id'])" transform='translate(8,0)' class='unhighlight' d='M 480,64L 416,64' >
+	<title>Fk album_ibfk_1
+album ref artista ( artista_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 480,64L 416,64' ><title>Fk album_ibfk_1
+album ref artista ( artista_id -&gt; id )</title></path>
+<text x='425' y='59' transform='rotate(0 425,59)' class='relName'>artista_id</text>
+<!-- == Fk 'album_favorito_album_favorito_ibfk_2' == -->
+<path id='album_favorito_album_favorito_ibfk_2'  onmouseover="hghl(['album_favorito_album_favorito_ibfk_2','spotify.album_favorito.album_id','spotify.album.id'])" onmouseout="uhghl(['album_favorito_album_favorito_ibfk_2','spotify.album_favorito.album_id','spotify.album.id'])" transform='translate(8,0)' class='unhighlight' d='M 688,64L 624,64' >
+	<title>Fk album_favorito_ibfk_2
+album_favorito ref album ( album_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 688,64L 624,64' ><title>Fk album_favorito_ibfk_2
+album_favorito ref album ( album_id -&gt; id )</title></path>
+<text x='634' y='59' transform='rotate(0 634,59)' class='relName'>album_id</text>
+<!-- == Fk 'album_favorito_album_favorito_ibfk_1' == -->
+<path id='album_favorito_album_favorito_ibfk_1'  onmouseover="hghl(['album_favorito_album_favorito_ibfk_1','spotify.album_favorito.usuario_id','spotify.usuario.id'])" onmouseout="uhghl(['album_favorito_album_favorito_ibfk_1','spotify.album_favorito.usuario_id','spotify.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 832,64L 928,64' >
+	<title>Fk album_favorito_ibfk_1
+album_favorito ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 832,64L 928,64' ><title>Fk album_favorito_ibfk_1
+album_favorito ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='842' y='59' transform='rotate(0 842,59)' class='relName'>usuario_id</text>
+<!-- == Fk 'artista_relacionado_artista_relacionado_ibfk_1' == -->
+<path id='artista_relacionado_artista_relacionado_ibfk_1'  onmouseover="hghl(['artista_relacionado_artista_relacionado_ibfk_1','spotify.artista_relacionado.artista_id','spotify.artista.id'])" onmouseout="uhghl(['artista_relacionado_artista_relacionado_ibfk_1','spotify.artista_relacionado.artista_id','spotify.artista.id'])" transform='translate(8,0)' class='unhighlight' d='M 304,224L 304,144' >
+	<title>Fk artista_relacionado_ibfk_1
+artista_relacionado ref artista ( artista_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 304,224L 304,144' ><title>Fk artista_relacionado_ibfk_1
+artista_relacionado ref artista ( artista_id -&gt; id )</title></path>
+<text x='307' y='222' transform='rotate(270 307,222)' class='relName'>artista_id</text>
+<!-- == Fk 'artista_relacionado_artista_relacionado_ibfk_2' == -->
+<path id='artista_relacionado_artista_relacionado_ibfk_2'  onmouseover="hghl(['artista_relacionado_artista_relacionado_ibfk_2','spotify.artista_relacionado.relacionado_id','spotify.artista.id'])" onmouseout="uhghl(['artista_relacionado_artista_relacionado_ibfk_2','spotify.artista_relacionado.relacionado_id','spotify.artista.id'])" transform='translate(8,0)' class='unhighlight' d='M 320,224L 320,144' >
+	<title>Fk artista_relacionado_ibfk_2
+artista_relacionado ref artista ( relacionado_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 320,224L 320,144' ><title>Fk artista_relacionado_ibfk_2
+artista_relacionado ref artista ( relacionado_id -&gt; id )</title></path>
+<text x='323' y='222' transform='rotate(270 323,222)' class='relName'>relacionado_id</text>
+<!-- == Fk 'artista_seguidores_artista_seguidores_ibfk_1' == -->
+<path id='artista_seguidores_artista_seguidores_ibfk_1'  onmouseover="hghl(['artista_seguidores_artista_seguidores_ibfk_1','spotify.artista_seguidores.artista_id','spotify.artista.id'])" onmouseout="uhghl(['artista_seguidores_artista_seguidores_ibfk_1','spotify.artista_seguidores.artista_id','spotify.artista.id'])" transform='translate(8,0)' class='unhighlight' d='M 192,80L 272,80' >
+	<title>Fk artista_seguidores_ibfk_1
+artista_seguidores ref artista ( artista_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 192,80L 272,80' ><title>Fk artista_seguidores_ibfk_1
+artista_seguidores ref artista ( artista_id -&gt; id )</title></path>
+<text x='202' y='75' transform='rotate(0 202,75)' class='relName'>artista_id</text>
+<!-- == Fk 'artista_seguidores_artista_seguidores_ibfk_2' == -->
+<path id='artista_seguidores_artista_seguidores_ibfk_2'  onmouseover="hghl(['artista_seguidores_artista_seguidores_ibfk_2','spotify.artista_seguidores.usuario_id','spotify.usuario.id'])" onmouseout="uhghl(['artista_seguidores_artista_seguidores_ibfk_2','spotify.artista_seguidores.usuario_id','spotify.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 176,144L 176,184Q 176,192 184,192L 928,192' >
+	<title>Fk artista_seguidores_ibfk_2
+artista_seguidores ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 176,144L 176,184Q 176,192 184,192L 928,192' ><title>Fk artista_seguidores_ibfk_2
+artista_seguidores ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='189' y='146' transform='rotate(90 189,146)' class='relName'>usuario_id</text>
+<!-- == Fk 'pago_pago_ibfk_1' == -->
+<path id='pago_pago_ibfk_1'  onmouseover="hghl(['pago_pago_ibfk_1','spotify.pago.usuario_id','spotify.usuario.id'])" onmouseout="uhghl(['pago_pago_ibfk_1','spotify.pago.usuario_id','spotify.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 960,320L 960,240' >
+	<title>Fk pago_ibfk_1
+pago ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 960,320L 960,240' ><title>Fk pago_ibfk_1
+pago ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='963' y='318' transform='rotate(270 963,318)' class='relName'>usuario_id</text>
+<!-- == Fk 'suscripcion_suscripcion_ibfk_1' == -->
+<path id='suscripcion_suscripcion_ibfk_1'  onmouseover="hghl(['suscripcion_suscripcion_ibfk_1','spotify.suscripcion.usuario_id','spotify.usuario.id'])" onmouseout="uhghl(['suscripcion_suscripcion_ibfk_1','spotify.suscripcion.usuario_id','spotify.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 848,320L 848,184Q 848,176 856,176L 928,176' >
+	<title>Fk suscripcion_ibfk_1
+suscripcion ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 848,320L 848,184Q 848,176 856,176L 928,176' ><title>Fk suscripcion_ibfk_1
+suscripcion ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='851' y='318' transform='rotate(270 851,318)' class='relName'>usuario_id</text>
+<!-- == Fk 'playlist_item_playlist_item_ibfk_4' == -->
+<path id='playlist_item_playlist_item_ibfk_4'  onmouseover="hghl(['playlist_item_playlist_item_ibfk_4','spotify.playlist_item.cancion_id','spotify.cancion.id'])" onmouseout="uhghl(['playlist_item_playlist_item_ibfk_4','spotify.playlist_item.cancion_id','spotify.cancion.id'])" transform='translate(8,0)' class='unhighlight' d='M 416,528L 480,528' >
+	<title>Fk playlist_item_ibfk_4
+playlist_item ref cancion ( cancion_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 416,528L 480,528' ><title>Fk playlist_item_ibfk_4
+playlist_item ref cancion ( cancion_id -&gt; id )</title></path>
+<text x='426' y='523' transform='rotate(0 426,523)' class='relName'>cancion_id</text>
+<!-- == Fk 'playlist_item_playlist_item_ibfk_3' == -->
+<path id='playlist_item_playlist_item_ibfk_3'  onmouseover="hghl(['playlist_item_playlist_item_ibfk_3','spotify.playlist_item.playlist_id','spotify.playlist.id'])" onmouseout="uhghl(['playlist_item_playlist_item_ibfk_3','spotify.playlist_item.playlist_id','spotify.playlist.id'])" transform='translate(8,0)' class='unhighlight' d='M 272,528L 208,528' >
+	<title>Fk playlist_item_ibfk_3
+playlist_item ref playlist ( playlist_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 272,528L 208,528' ><title>Fk playlist_item_ibfk_3
+playlist_item ref playlist ( playlist_id -&gt; id )</title></path>
+<text x='212' y='523' transform='rotate(0 212,523)' class='relName'>playlist_id</text>
+<!-- == Fk 'playlist_item_playlist_item_ibfk_2' == -->
+<path id='playlist_item_playlist_item_ibfk_2'  onmouseover="hghl(['playlist_item_playlist_item_ibfk_2','spotify.playlist_item.usuario_id','spotify.usuario.id'])" onmouseout="uhghl(['playlist_item_playlist_item_ibfk_2','spotify.playlist_item.usuario_id','spotify.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 400,496L 400,488Q 400,480 408,480L 1064,480Q 1072,480 1072,472L 1072,240' >
+	<title>Fk playlist_item_ibfk_2
+playlist_item ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 400,496L 400,488Q 400,480 408,480L 1064,480Q 1072,480 1072,472L 1072,240' ><title>Fk playlist_item_ibfk_2
+playlist_item ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='403' y='494' transform='rotate(270 403,494)' class='relName'>usuario_id</text>
+<!-- == Fk 'cancion_cancion_ibfk_1' == -->
+<path id='cancion_cancion_ibfk_1'  onmouseover="hghl(['cancion_cancion_ibfk_1','spotify.cancion.album_id','spotify.album.id'])" onmouseout="uhghl(['cancion_cancion_ibfk_1','spotify.cancion.album_id','spotify.album.id'])" transform='translate(8,0)' class='unhighlight' d='M 512,496L 512,176' >
+	<title>Fk cancion_ibfk_1
+cancion ref album ( album_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 512,496L 512,176' ><title>Fk cancion_ibfk_1
+cancion ref album ( album_id -&gt; id )</title></path>
+<text x='515' y='494' transform='rotate(270 515,494)' class='relName'>album_id</text>
+<!-- == Fk 'cancion_favorita_cancion_favorita_ibfk_2' == -->
+<path id='cancion_favorita_cancion_favorita_ibfk_2'  onmouseover="hghl(['cancion_favorita_cancion_favorita_ibfk_2','spotify.cancion_favorita.cancion_id','spotify.cancion.id'])" onmouseout="uhghl(['cancion_favorita_cancion_favorita_ibfk_2','spotify.cancion_favorita.cancion_id','spotify.cancion.id'])" transform='translate(8,0)' class='unhighlight' d='M 720,528L 656,528' >
+	<title>Fk cancion_favorita_ibfk_2
+cancion_favorita ref cancion ( cancion_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 720,528L 656,528' ><title>Fk cancion_favorita_ibfk_2
+cancion_favorita ref cancion ( cancion_id -&gt; id )</title></path>
+<text x='656' y='523' transform='rotate(0 656,523)' class='relName'>cancion_id</text>
+<!-- == Fk 'cancion_favorita_cancion_favorita_ibfk_1' == -->
+<path id='cancion_favorita_cancion_favorita_ibfk_1'  onmouseover="hghl(['cancion_favorita_cancion_favorita_ibfk_1','spotify.cancion_favorita.usuario_id','spotify.usuario.id'])" onmouseout="uhghl(['cancion_favorita_cancion_favorita_ibfk_1','spotify.cancion_favorita.usuario_id','spotify.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 864,496L 864,472Q 864,464 872,464L 904,464Q 912,464 912,456L 912,216Q 912,208 920,208L 928,208' >
+	<title>Fk cancion_favorita_ibfk_1
+cancion_favorita ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 864,496L 864,472Q 864,464 872,464L 904,464Q 912,464 912,456L 912,216Q 912,208 920,208L 928,208' ><title>Fk cancion_favorita_ibfk_1
+cancion_favorita ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='867' y='494' transform='rotate(270 867,494)' class='relName'>usuario_id</text>
+<!-- == Fk 'playlist_eliminada_playlist_eliminada_ibfk_1' == -->
+<path id='playlist_eliminada_playlist_eliminada_ibfk_1'  onmouseover="hghl(['playlist_eliminada_playlist_eliminada_ibfk_1','spotify.playlist_eliminada.playlist_id','spotify.playlist.id'])" onmouseout="uhghl(['playlist_eliminada_playlist_eliminada_ibfk_1','spotify.playlist_eliminada.playlist_id','spotify.playlist.id'])" transform='translate(8,0)' class='unhighlight' d='M 272,736L 200,736Q 192,736 192,728L 192,640' >
+	<title>Fk playlist_eliminada_ibfk_1
+playlist_eliminada ref playlist ( playlist_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1u)' marker-end='url(#arrow1u)'    d='M 272,736L 200,736Q 192,736 192,728L 192,640' ><title>Fk playlist_eliminada_ibfk_1
+playlist_eliminada ref playlist ( playlist_id -&gt; id )</title></path>
+<text x='212' y='731' transform='rotate(0 212,731)' class='relName'>playlist_id</text>
+<!-- == Fk 'playlist_playlist_ibfk_1' == -->
+<path id='playlist_playlist_ibfk_1'  onmouseover="hghl(['playlist_playlist_ibfk_1','spotify.playlist.usuario_id','spotify.usuario.id'])" onmouseout="uhghl(['playlist_playlist_ibfk_1','spotify.playlist.usuario_id','spotify.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 192,496L 192,168Q 192,160 200,160L 456,160Q 464,160 464,152L 464,24Q 464,16 472,16L 952,16Q 960,16 960,24L 960,32' >
+	<title>Fk playlist_ibfk_1
+playlist ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 192,496L 192,168Q 192,160 200,160L 456,160Q 464,160 464,152L 464,24Q 464,16 472,16L 952,16Q 960,16 960,24L 960,32' ><title>Fk playlist_ibfk_1
+playlist ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='195' y='494' transform='rotate(270 195,494)' class='relName'>usuario_id</text>
+<!-- == Fk 'cuenta_pago_paypal_cuenta_pago_paypal_ibfk_1' == -->
+<path id='cuenta_pago_paypal_cuenta_pago_paypal_ibfk_1'  onmouseover="hghl(['cuenta_pago_paypal_cuenta_pago_paypal_ibfk_1','spotify.cuenta_pago_paypal.usuario_id','spotify.usuario.id'])" onmouseout="uhghl(['cuenta_pago_paypal_cuenta_pago_paypal_ibfk_1','spotify.cuenta_pago_paypal.usuario_id','spotify.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 1168,64L 1104,64' >
+	<title>Fk cuenta_pago_paypal_ibfk_1
+cuenta_pago_paypal ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1u)' marker-end='url(#arrow1u)'    d='M 1168,64L 1104,64' ><title>Fk cuenta_pago_paypal_ibfk_1
+cuenta_pago_paypal ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='1106' y='59' transform='rotate(0 1106,59)' class='relName'>usuario_id</text>
+<!-- == Fk 'cuenta_pago_tarjeta_credito_cuenta_pago_tarjeta_credito_ibfk_1' == -->
+<path id='cuenta_pago_tarjeta_credito_cuenta_pago_tarjeta_credito_ibfk_1'  onmouseover="hghl(['cuenta_pago_tarjeta_credito_cuenta_pago_tarjeta_credito_ibfk_1','spotify.cuenta_pago_tarjeta_credito.usuario_id','spotify.usuario.id'])" onmouseout="uhghl(['cuenta_pago_tarjeta_credito_cuenta_pago_tarjeta_credito_ibfk_1','spotify.cuenta_pago_tarjeta_credito.usuario_id','spotify.usuario.id'])" transform='translate(8,0)' class='unhighlight' d='M 1120,336L 1120,232Q 1120,224 1112,224L 1104,224' >
+	<title>Fk cuenta_pago_tarjeta_credito_ibfk_1
+cuenta_pago_tarjeta_credito ref usuario ( usuario_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1u)' marker-end='url(#arrow1u)'    d='M 1120,336L 1120,232Q 1120,224 1112,224L 1104,224' ><title>Fk cuenta_pago_tarjeta_credito_ibfk_1
+cuenta_pago_tarjeta_credito ref usuario ( usuario_id -&gt; id )</title></path>
+<text x='1123' y='334' transform='rotate(270 1123,334)' class='relName'>usuario_id</text>
+<!-- == Table 'album' == -->
+<rect id='depict_spotify.album' class='entity' style='stroke:none;' x='496' y='40' width='128' height='128' rx='8' ry='8' />
+<path d='M 496 68 L 496 48 Q 496 40 504 40 L 616 40 Q 624 40 624 48 L 624 68 L496 68 ' style='fill:url(#tbg_F4DDBE);stroke-width:0;' />
+<rect class='entity' x='496' y='40' width='128' height='128' rx='8' ry='8' style='fill:none;stroke:#E8DBCB'/>
+<a xlink:href='#spotify.album'><text x='534' y='59' >album</text><title>Table spotify.album</title></a>
+  <use id='nn' x='498' y='77' xlink:href='#nn'/><use id='pk' x='498' y='76' xlink:href='#pk'><title>Pk pk_album ( id ) </title></use><text id='spotify.album.id' x='515' y='87' onmouseover="hghl(['album_favorito_album_favorito_ibfk_2','spotify.album_favorito.album_id','cancion_cancion_ibfk_1','spotify.cancion.album_id'])" onmouseout="uhghl(['album_favorito_album_favorito_ibfk_2','spotify.album_favorito.album_id','cancion_cancion_ibfk_1','spotify.cancion.album_id'])">id</text><title>id
+* int</title><a xlink:href='#spotify.album'><use id='ref' x='612' y='76' xlink:href='#ref'/><title>Referred by album_favorito ( album_id -&gt; id ) 
+Referred by cancion ( album_id -&gt; id ) </title></a>
+  <use id='nn' x='498' y='93' xlink:href='#nn'/><text id='spotify.album.titulo' x='515' y='103'>titulo</text><title>titulo
+* varchar(250)</title><text x='621' y='100' text-anchor='end' class='colType'>t</text>  <use id='nn' x='498' y='109' xlink:href='#nn'/><text id='spotify.album.año' x='515' y='119'>año</text><title>año
+* year(4)</title><text x='621' y='116' text-anchor='end' class='colType'>#</text>  <use id='nn' x='498' y='125' xlink:href='#nn'/><text id='spotify.album.imagen_url' x='515' y='135'>imagen_url</text><title>imagen_url
+* varchar(250)
+no es aconsejable guardarla en la base por tema de rendimiento</title><text x='621' y='132' text-anchor='end' class='colType'>t</text>  <use id='nn' x='498' y='141' xlink:href='#nn'/><use id='idx' x='498' y='140' xlink:href='#idx'><title>artista_id ( artista_id ) </title></use><text id='spotify.album.artista_id' x='515' y='151' onmouseover="hghl(['album_album_ibfk_1','spotify.artista.id'])" onmouseout="uhghl(['album_album_ibfk_1','spotify.artista.id'])">artista_id</text><title>artista_id
+* int</title><a xlink:href='#spotify.album'><use id='fk' x='612' y='140' xlink:href='#fk'/><title>References artista ( artista_id -&gt; id ) </title></a>
+
+<!-- == Table 'album_favorito' == -->
+<rect id='depict_spotify.album_favorito' class='entity' style='stroke:none;' x='704' y='40' width='128' height='80' rx='8' ry='8' />
+<path d='M 704 68 L 704 48 Q 704 40 712 40 L 824 40 Q 832 40 832 48 L 832 68 L704 68 ' style='fill:url(#tbg_F4DDBE);stroke-width:0;' />
+<rect class='entity' x='704' y='40' width='128' height='80' rx='8' ry='8' style='fill:none;stroke:#E8DBCB'/>
+<a xlink:href='#spotify.album_favorito'><text x='711' y='59' >album_favorito</text><title>Table spotify.album_favorito</title></a>
+  <use id='nn' x='706' y='77' xlink:href='#nn'/><use id='pk' x='706' y='76' xlink:href='#pk'><title>Pk pk_album_favorito ( usuario_id, album_id ) </title></use><text id='spotify.album_favorito.usuario_id' x='723' y='87' onmouseover="hghl(['album_favorito_album_favorito_ibfk_1','spotify.usuario.id'])" onmouseout="uhghl(['album_favorito_album_favorito_ibfk_1','spotify.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#spotify.album_favorito'><use id='fk' x='820' y='76' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+  <use id='nn' x='706' y='93' xlink:href='#nn'/><use id='pk' x='706' y='92' xlink:href='#pk'><title>Pk pk_album_favorito ( usuario_id, album_id ) album_id ( album_id ) </title></use><text id='spotify.album_favorito.album_id' x='723' y='103' onmouseover="hghl(['album_favorito_album_favorito_ibfk_2','spotify.album.id'])" onmouseout="uhghl(['album_favorito_album_favorito_ibfk_2','spotify.album.id'])">album_id</text><title>album_id
+* int</title><a xlink:href='#spotify.album_favorito'><use id='fk' x='820' y='92' xlink:href='#fk'/><title>References album ( album_id -&gt; id ) </title></a>
+
+<!-- == Table 'artista' == -->
+<rect id='depict_spotify.artista' class='entity' style='stroke:none;' x='288' y='40' width='128' height='96' rx='8' ry='8' />
+<path d='M 288 68 L 288 48 Q 288 40 296 40 L 408 40 Q 416 40 416 48 L 416 68 L288 68 ' style='fill:url(#tbg_F4DDBE);stroke-width:0;' />
+<rect class='entity' x='288' y='40' width='128' height='96' rx='8' ry='8' style='fill:none;stroke:#E8DBCB'/>
+<a xlink:href='#spotify.artista'><text x='325' y='59' >artista</text><title>Table spotify.artista</title></a>
+  <use id='nn' x='290' y='77' xlink:href='#nn'/><use id='pk' x='290' y='76' xlink:href='#pk'><title>Pk pk_artista ( id ) </title></use><text id='spotify.artista.id' x='307' y='87' onmouseover="hghl(['album_album_ibfk_1','spotify.album.artista_id','artista_relacionado_artista_relacionado_ibfk_1','spotify.artista_relacionado.artista_id','artista_relacionado_artista_relacionado_ibfk_2','spotify.artista_relacionado.relacionado_id','artista_seguidores_artista_seguidores_ibfk_1','spotify.artista_seguidores.artista_id'])" onmouseout="uhghl(['album_album_ibfk_1','spotify.album.artista_id','artista_relacionado_artista_relacionado_ibfk_1','spotify.artista_relacionado.artista_id','artista_relacionado_artista_relacionado_ibfk_2','spotify.artista_relacionado.relacionado_id','artista_seguidores_artista_seguidores_ibfk_1','spotify.artista_seguidores.artista_id'])">id</text><title>id
+* int</title><a xlink:href='#spotify.artista'><use id='ref' x='404' y='76' xlink:href='#ref'/><title>Referred by album ( artista_id -&gt; id ) 
+Referred by artista_relacionado ( artista_id -&gt; id ) 
+Referred by artista_relacionado ( relacionado_id -&gt; id ) 
+Referred by artista_seguidores ( artista_id -&gt; id ) </title></a>
+  <use id='nn' x='290' y='93' xlink:href='#nn'/><text id='spotify.artista.nombre' x='307' y='103'>nombre</text><title>nombre
+* varchar(250)
+pudiera ser que varios artistas tengan el mismo nombre</title><text x='413' y='100' text-anchor='end' class='colType'>t</text>  <use id='nn' x='290' y='109' xlink:href='#nn'/><text id='spotify.artista.imagen_url' x='307' y='119'>imagen_url</text><title>imagen_url
+* varchar(250)
+no es aconsejable guardarlo en la base por tema de rendimiento</title><text x='413' y='116' text-anchor='end' class='colType'>t</text>
+<!-- == Table 'artista_relacionado' == -->
+<rect id='depict_spotify.artista_relacionado' class='entity' style='stroke:none;' x='256' y='232' width='160' height='80' rx='8' ry='8' />
+<path d='M 256 260 L 256 240 Q 256 232 264 232 L 408 232 Q 416 232 416 240 L 416 260 L256 260 ' style='fill:url(#tbg_F4DDBE);stroke-width:0;' />
+<rect class='entity' x='256' y='232' width='160' height='80' rx='8' ry='8' style='fill:none;stroke:#E8DBCB'/>
+<a xlink:href='#spotify.artista_relacionado'><text x='265' y='251' >artista_relacionado</text><title>Table spotify.artista_relacionado</title></a>
+  <use id='nn' x='258' y='269' xlink:href='#nn'/><use id='pk' x='258' y='268' xlink:href='#pk'><title>Pk pk_artista_relacionado ( artista_id, relacionado_id ) </title></use><text id='spotify.artista_relacionado.artista_id' x='275' y='279' onmouseover="hghl(['artista_relacionado_artista_relacionado_ibfk_1','spotify.artista.id'])" onmouseout="uhghl(['artista_relacionado_artista_relacionado_ibfk_1','spotify.artista.id'])">artista_id</text><title>artista_id
+* int</title><a xlink:href='#spotify.artista_relacionado'><use id='fk' x='404' y='268' xlink:href='#fk'/><title>References artista ( artista_id -&gt; id ) </title></a>
+  <use id='nn' x='258' y='285' xlink:href='#nn'/><use id='pk' x='258' y='284' xlink:href='#pk'><title>Pk pk_artista_relacionado ( artista_id, relacionado_id ) relacionado_id ( relacionado_id ) </title></use><text id='spotify.artista_relacionado.relacionado_id' x='275' y='295' onmouseover="hghl(['artista_relacionado_artista_relacionado_ibfk_2','spotify.artista.id'])" onmouseout="uhghl(['artista_relacionado_artista_relacionado_ibfk_2','spotify.artista.id'])">relacionado_id</text><title>relacionado_id
+* int</title><a xlink:href='#spotify.artista_relacionado'><use id='fk' x='404' y='284' xlink:href='#fk'/><title>References artista ( relacionado_id -&gt; id ) </title></a>
+
+<!-- == Table 'artista_seguidores' == -->
+<rect id='depict_spotify.artista_seguidores' class='entity' style='stroke:none;' x='48' y='56' width='144' height='80' rx='8' ry='8' />
+<path d='M 48 84 L 48 64 Q 48 56 56 56 L 184 56 Q 192 56 192 64 L 192 84 L48 84 ' style='fill:url(#tbg_F4DDBE);stroke-width:0;' />
+<rect class='entity' x='48' y='56' width='144' height='80' rx='8' ry='8' style='fill:none;stroke:#E8DBCB'/>
+<a xlink:href='#spotify.artista_seguidores'><text x='51' y='75' >artista_seguidores</text><title>Table spotify.artista_seguidores</title></a>
+  <use id='nn' x='50' y='93' xlink:href='#nn'/><use id='pk' x='50' y='92' xlink:href='#pk'><title>Pk pk_artista_seguidores ( artista_id, usuario_id ) </title></use><text id='spotify.artista_seguidores.artista_id' x='67' y='103' onmouseover="hghl(['artista_seguidores_artista_seguidores_ibfk_1','spotify.artista.id'])" onmouseout="uhghl(['artista_seguidores_artista_seguidores_ibfk_1','spotify.artista.id'])">artista_id</text><title>artista_id
+* int</title><a xlink:href='#spotify.artista_seguidores'><use id='fk' x='180' y='92' xlink:href='#fk'/><title>References artista ( artista_id -&gt; id ) </title></a>
+  <use id='nn' x='50' y='109' xlink:href='#nn'/><use id='pk' x='50' y='108' xlink:href='#pk'><title>Pk pk_artista_seguidores ( artista_id, usuario_id ) usuario_id ( usuario_id ) </title></use><text id='spotify.artista_seguidores.usuario_id' x='67' y='119' onmouseover="hghl(['artista_seguidores_artista_seguidores_ibfk_2','spotify.usuario.id'])" onmouseout="uhghl(['artista_seguidores_artista_seguidores_ibfk_2','spotify.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#spotify.artista_seguidores'><use id='fk' x='180' y='108' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+
+<!-- == Table 'pago' == -->
+<rect id='depict_spotify.pago' class='entity' style='stroke:none;' x='944' y='328' width='112' height='112' rx='8' ry='8' />
+<path d='M 944 356 L 944 336 Q 944 328 952 328 L 1048 328 Q 1056 328 1056 336 L 1056 356 L944 356 ' style='fill:url(#tbg_BED3F4);stroke-width:0;' />
+<rect class='entity' x='944' y='328' width='112' height='112' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#spotify.pago'><text x='978' y='347' >pago</text><title>Table spotify.pago</title></a>
+  <use id='nn' x='946' y='365' xlink:href='#nn'/><use id='pk' x='946' y='364' xlink:href='#pk'><title>Pk pk_pago ( orden_id ) </title></use><text id='spotify.pago.orden_id' x='963' y='375'>orden_id</text><title>orden_id
+* int</title><text x='1053' y='372' text-anchor='end' class='colType'>#</text>  <use id='nn' x='946' y='381' xlink:href='#nn'/><use id='idx' x='946' y='380' xlink:href='#idx'><title>usuario_id ( usuario_id ) </title></use><text id='spotify.pago.usuario_id' x='963' y='391' onmouseover="hghl(['pago_pago_ibfk_1','spotify.usuario.id'])" onmouseout="uhghl(['pago_pago_ibfk_1','spotify.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#spotify.pago'><use id='fk' x='1044' y='380' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+  <use id='nn' x='946' y='397' xlink:href='#nn'/><text id='spotify.pago.fecha' x='963' y='407'>fecha</text><title>fecha
+* datetime default &apos;0000-00-00 00:00:00&apos;</title><text x='1053' y='404' text-anchor='end' class='colType'>d</text>  <use id='nn' x='946' y='413' xlink:href='#nn'/><text id='spotify.pago.total' x='963' y='423'>total</text><title>total
+* decimal(5,2)</title><text x='1053' y='420' text-anchor='end' class='colType'>#</text>
+<!-- == Table 'suscripcion' == -->
+<rect id='depict_spotify.suscripcion' class='entity' style='stroke:none;' x='688' y='328' width='176' height='112' rx='8' ry='8' />
+<path d='M 688 356 L 688 336 Q 688 328 696 328 L 856 328 Q 864 328 864 336 L 864 356 L688 356 ' style='fill:url(#tbg_BED3F4);stroke-width:0;' />
+<rect class='entity' x='688' y='328' width='176' height='112' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#spotify.suscripcion'><text x='732' y='347' >suscripcion</text><title>Table spotify.suscripcion</title></a>
+  <use id='nn' x='690' y='365' xlink:href='#nn'/><use id='idx' x='690' y='364' xlink:href='#idx'><title>usuario_id ( usuario_id ) </title></use><text id='spotify.suscripcion.usuario_id' x='707' y='375' onmouseover="hghl(['suscripcion_suscripcion_ibfk_1','spotify.usuario.id'])" onmouseout="uhghl(['suscripcion_suscripcion_ibfk_1','spotify.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#spotify.suscripcion'><use id='fk' x='852' y='364' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+  <use id='nn' x='690' y='381' xlink:href='#nn'/><text id='spotify.suscripcion.fecha_suscripcion' x='707' y='391'>fecha_suscripcion</text><title>fecha_suscripcion
+* datetime default &apos;0000-00-00 00:00:00&apos;</title><text x='861' y='388' text-anchor='end' class='colType'>d</text>  <use id='nn' x='690' y='397' xlink:href='#nn'/><text id='spotify.suscripcion.fecha_renovacion' x='707' y='407'>fecha_renovacion</text><title>fecha_renovacion
+* datetime default &apos;0000-00-00 00:00:00&apos;</title><text x='861' y='404' text-anchor='end' class='colType'>d</text>  <use id='nn' x='690' y='413' xlink:href='#nn'/><text id='spotify.suscripcion.forma_de_pago' x='707' y='423'>forma_de_pago</text><title>forma_de_pago
+* tinyint
+0 = paypal, 1 = tarjeta crédito</title><text x='861' y='420' text-anchor='end' class='colType'>#</text>
+<!-- == Table 'usuario' == -->
+<rect id='depict_spotify.usuario' class='entity' style='stroke:none;' x='944' y='40' width='160' height='192' rx='8' ry='8' />
+<path d='M 944 68 L 944 48 Q 944 40 952 40 L 1096 40 Q 1104 40 1104 48 L 1104 68 L944 68 ' style='fill:url(#tbg_BED3F4);stroke-width:0;' />
+<rect class='entity' x='944' y='40' width='160' height='192' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#spotify.usuario'><text x='994' y='59' >usuario</text><title>Table spotify.usuario</title></a>
+  <use id='nn' x='946' y='77' xlink:href='#nn'/><use id='pk' x='946' y='76' xlink:href='#pk'><title>Pk pk_usuario ( id ) </title></use><text id='spotify.usuario.id' x='963' y='87' onmouseover="hghl(['album_favorito_album_favorito_ibfk_1','spotify.album_favorito.usuario_id','artista_seguidores_artista_seguidores_ibfk_2','spotify.artista_seguidores.usuario_id','cancion_favorita_cancion_favorita_ibfk_1','spotify.cancion_favorita.usuario_id','cuenta_pago_paypal_cuenta_pago_paypal_ibfk_1','spotify.cuenta_pago_paypal.usuario_id','cuenta_pago_tarjeta_credito_cuenta_pago_tarjeta_credito_ibfk_1','spotify.cuenta_pago_tarjeta_credito.usuario_id','pago_pago_ibfk_1','spotify.pago.usuario_id','playlist_playlist_ibfk_1','spotify.playlist.usuario_id','playlist_item_playlist_item_ibfk_2','spotify.playlist_item.usuario_id','suscripcion_suscripcion_ibfk_1','spotify.suscripcion.usuario_id'])" onmouseout="uhghl(['album_favorito_album_favorito_ibfk_1','spotify.album_favorito.usuario_id','artista_seguidores_artista_seguidores_ibfk_2','spotify.artista_seguidores.usuario_id','cancion_favorita_cancion_favorita_ibfk_1','spotify.cancion_favorita.usuario_id','cuenta_pago_paypal_cuenta_pago_paypal_ibfk_1','spotify.cuenta_pago_paypal.usuario_id','cuenta_pago_tarjeta_credito_cuenta_pago_tarjeta_credito_ibfk_1','spotify.cuenta_pago_tarjeta_credito.usuario_id','pago_pago_ibfk_1','spotify.pago.usuario_id','playlist_playlist_ibfk_1','spotify.playlist.usuario_id','playlist_item_playlist_item_ibfk_2','spotify.playlist_item.usuario_id','suscripcion_suscripcion_ibfk_1','spotify.suscripcion.usuario_id'])">id</text><title>id
+* int</title><a xlink:href='#spotify.usuario'><use id='ref' x='1092' y='76' xlink:href='#ref'/><title>Referred by album_favorito ( usuario_id -&gt; id ) 
+Referred by artista_seguidores ( usuario_id -&gt; id ) 
+Referred by cancion_favorita ( usuario_id -&gt; id ) 
+Referred by cuenta_pago_paypal ( usuario_id -&gt; id ) 
+Referred by cuenta_pago_tarjeta_credito ( usuario_id -&gt; id ) 
+Referred by pago ( usuario_id -&gt; id ) 
+Referred by playlist ( usuario_id -&gt; id ) 
+Referred by playlist_item ( usuario_id -&gt; id ) 
+Referred by suscripcion ( usuario_id -&gt; id ) </title></a>
+  <use id='nn' x='946' y='93' xlink:href='#nn'/><text id='spotify.usuario.premium' x='963' y='103'>premium</text><title>premium
+* tinyint
+1 = premium, 0 = free</title><text x='1101' y='100' text-anchor='end' class='colType'>#</text>  <use id='nn' x='946' y='109' xlink:href='#nn'/><text id='spotify.usuario.email' x='963' y='119'>email</text><title>email
+* varchar(250)</title><text x='1101' y='116' text-anchor='end' class='colType'>t</text>  <use id='nn' x='946' y='125' xlink:href='#nn'/><text id='spotify.usuario.password' x='963' y='135'>password</text><title>password
+* varchar(10)</title><text x='1101' y='132' text-anchor='end' class='colType'>t</text>  <use id='nn' x='946' y='141' xlink:href='#nn'/><text id='spotify.usuario.nombre_usuario' x='963' y='151'>nombre_usuario</text><title>nombre_usuario
+* varchar(50)</title><text x='1101' y='148' text-anchor='end' class='colType'>t</text>  <use id='nn' x='946' y='157' xlink:href='#nn'/><text id='spotify.usuario.nacimiento' x='963' y='167'>nacimiento</text><title>nacimiento
+* datetime</title><text x='1101' y='164' text-anchor='end' class='colType'>d</text>  <use id='nn' x='946' y='173' xlink:href='#nn'/><text id='spotify.usuario.sexo' x='963' y='183'>sexo</text><title>sexo
+* varchar(1)</title><text x='1101' y='180' text-anchor='end' class='colType'>t</text>  <use id='nn' x='946' y='189' xlink:href='#nn'/><text id='spotify.usuario.pais' x='963' y='199'>pais</text><title>pais
+* varchar(50)</title><text x='1101' y='196' text-anchor='end' class='colType'>t</text>  <use id='nn' x='946' y='205' xlink:href='#nn'/><text id='spotify.usuario.cp' x='963' y='215'>cp</text><title>cp
+* smallint</title><text x='1101' y='212' text-anchor='end' class='colType'>#</text>
+<!-- == Table 'playlist_item' == -->
+<rect id='depict_spotify.playlist_item' class='entity' style='stroke:none;' x='288' y='504' width='128' height='128' rx='8' ry='8' />
+<path d='M 288 532 L 288 512 Q 288 504 296 504 L 408 504 Q 416 504 416 512 L 416 532 L288 532 ' style='fill:url(#tbg_C7F4BE);stroke-width:0;' />
+<rect class='entity' x='288' y='504' width='128' height='128' rx='8' ry='8' style='fill:none;stroke:#CFE8CB'/>
+<a xlink:href='#spotify.playlist_item'><text x='303' y='523' >playlist_item</text><title>Table spotify.playlist_item</title></a>
+  <use id='nn' x='290' y='541' xlink:href='#nn'/><use id='pk' x='290' y='540' xlink:href='#pk'><title>Pk pk_playlist_item ( playlist_id, cancion_id ) </title></use><text id='spotify.playlist_item.playlist_id' x='307' y='551' onmouseover="hghl(['playlist_item_playlist_item_ibfk_3','spotify.playlist.id'])" onmouseout="uhghl(['playlist_item_playlist_item_ibfk_3','spotify.playlist.id'])">playlist_id</text><title>playlist_id
+* int</title><a xlink:href='#spotify.playlist_item'><use id='fk' x='404' y='540' xlink:href='#fk'/><title>References playlist ( playlist_id -&gt; id ) </title></a>
+  <use id='nn' x='290' y='557' xlink:href='#nn'/><use id='pk' x='290' y='556' xlink:href='#pk'><title>Pk pk_playlist_item ( playlist_id, cancion_id ) cancion_id ( cancion_id ) </title></use><text id='spotify.playlist_item.cancion_id' x='307' y='567' onmouseover="hghl(['playlist_item_playlist_item_ibfk_4','spotify.cancion.id'])" onmouseout="uhghl(['playlist_item_playlist_item_ibfk_4','spotify.cancion.id'])">cancion_id</text><title>cancion_id
+* int</title><a xlink:href='#spotify.playlist_item'><use id='fk' x='404' y='556' xlink:href='#fk'/><title>References cancion ( cancion_id -&gt; id ) </title></a>
+  <use id='nn' x='290' y='573' xlink:href='#nn'/><use id='idx' x='290' y='572' xlink:href='#idx'><title>usuario_id ( usuario_id ) </title></use><text id='spotify.playlist_item.usuario_id' x='307' y='583' onmouseover="hghl(['playlist_item_playlist_item_ibfk_2','spotify.usuario.id'])" onmouseout="uhghl(['playlist_item_playlist_item_ibfk_2','spotify.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#spotify.playlist_item'><use id='fk' x='404' y='572' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+  <use id='nn' x='290' y='589' xlink:href='#nn'/><text id='spotify.playlist_item.fecha' x='307' y='599'>fecha</text><title>fecha
+* datetime default &apos;0000-00-00 00:00:00&apos;</title><text x='413' y='596' text-anchor='end' class='colType'>d</text>  <use id='nn' x='290' y='605' xlink:href='#nn'/><text id='spotify.playlist_item.orden' x='307' y='615'>orden</text><title>orden
+* smallint
+orden en el playlist, no lo pide el ejercicio</title><text x='413' y='612' text-anchor='end' class='colType'>#</text>
+<!-- == Table 'cancion' == -->
+<rect id='depict_spotify.cancion' class='entity' style='stroke:none;' x='496' y='504' width='160' height='128' rx='8' ry='8' />
+<path d='M 496 532 L 496 512 Q 496 504 504 504 L 648 504 Q 656 504 656 512 L 656 532 L496 532 ' style='fill:url(#tbg_C7F4BE);stroke-width:0;' />
+<rect class='entity' x='496' y='504' width='160' height='128' rx='8' ry='8' style='fill:none;stroke:#CFE8CB'/>
+<a xlink:href='#spotify.cancion'><text x='545' y='523' >cancion</text><title>Table spotify.cancion</title></a>
+  <use id='nn' x='498' y='541' xlink:href='#nn'/><use id='pk' x='498' y='540' xlink:href='#pk'><title>Pk pk_cancion ( id ) </title></use><text id='spotify.cancion.id' x='515' y='551' onmouseover="hghl(['cancion_favorita_cancion_favorita_ibfk_2','spotify.cancion_favorita.cancion_id','playlist_item_playlist_item_ibfk_4','spotify.playlist_item.cancion_id'])" onmouseout="uhghl(['cancion_favorita_cancion_favorita_ibfk_2','spotify.cancion_favorita.cancion_id','playlist_item_playlist_item_ibfk_4','spotify.playlist_item.cancion_id'])">id</text><title>id
+* int</title><a xlink:href='#spotify.cancion'><use id='ref' x='644' y='540' xlink:href='#ref'/><title>Referred by cancion_favorita ( cancion_id -&gt; id ) 
+Referred by playlist_item ( cancion_id -&gt; id ) </title></a>
+  <use id='nn' x='498' y='557' xlink:href='#nn'/><text id='spotify.cancion.titulo' x='515' y='567'>titulo</text><title>titulo
+* varchar(250)</title><text x='653' y='564' text-anchor='end' class='colType'>t</text>  <use id='nn' x='498' y='573' xlink:href='#nn'/><text id='spotify.cancion.duracion' x='515' y='583'>duracion</text><title>duracion
+* smallint</title><text x='653' y='580' text-anchor='end' class='colType'>#</text>  <use id='nn' x='498' y='589' xlink:href='#nn'/><text id='spotify.cancion.reproducciones' x='515' y='599'>reproducciones</text><title>reproducciones
+* bigint
+max 9223372036854775807</title><text x='653' y='596' text-anchor='end' class='colType'>#</text>  <use id='nn' x='498' y='605' xlink:href='#nn'/><use id='idx' x='498' y='604' xlink:href='#idx'><title>album_id ( album_id ) </title></use><text id='spotify.cancion.album_id' x='515' y='615' onmouseover="hghl(['cancion_cancion_ibfk_1','spotify.album.id'])" onmouseout="uhghl(['cancion_cancion_ibfk_1','spotify.album.id'])">album_id</text><title>album_id
+* int</title><a xlink:href='#spotify.cancion'><use id='fk' x='644' y='604' xlink:href='#fk'/><title>References album ( album_id -&gt; id ) </title></a>
+
+<!-- == Table 'cancion_favorita' == -->
+<rect id='depict_spotify.cancion_favorita' class='entity' style='stroke:none;' x='736' y='504' width='144' height='80' rx='8' ry='8' />
+<path d='M 736 532 L 736 512 Q 736 504 744 504 L 872 504 Q 880 504 880 512 L 880 532 L736 532 ' style='fill:url(#tbg_C7F4BE);stroke-width:0;' />
+<rect class='entity' x='736' y='504' width='144' height='80' rx='8' ry='8' style='fill:none;stroke:#CFE8CB'/>
+<a xlink:href='#spotify.cancion_favorita'><text x='746' y='523' >cancion_favorita</text><title>Table spotify.cancion_favorita</title></a>
+  <use id='nn' x='738' y='541' xlink:href='#nn'/><use id='pk' x='738' y='540' xlink:href='#pk'><title>Pk pk_cancion_favorita ( usuario_id, cancion_id ) </title></use><text id='spotify.cancion_favorita.usuario_id' x='755' y='551' onmouseover="hghl(['cancion_favorita_cancion_favorita_ibfk_1','spotify.usuario.id'])" onmouseout="uhghl(['cancion_favorita_cancion_favorita_ibfk_1','spotify.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#spotify.cancion_favorita'><use id='fk' x='868' y='540' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+  <use id='nn' x='738' y='557' xlink:href='#nn'/><use id='pk' x='738' y='556' xlink:href='#pk'><title>Pk pk_cancion_favorita ( usuario_id, cancion_id ) cancion_id ( cancion_id ) </title></use><text id='spotify.cancion_favorita.cancion_id' x='755' y='567' onmouseover="hghl(['cancion_favorita_cancion_favorita_ibfk_2','spotify.cancion.id'])" onmouseout="uhghl(['cancion_favorita_cancion_favorita_ibfk_2','spotify.cancion.id'])">cancion_id</text><title>cancion_id
+* int</title><a xlink:href='#spotify.cancion_favorita'><use id='fk' x='868' y='556' xlink:href='#fk'/><title>References cancion ( cancion_id -&gt; id ) </title></a>
+
+<!-- == Table 'playlist_eliminada' == -->
+<rect id='depict_spotify.playlist_eliminada' class='entity' style='stroke:none;' x='288' y='728' width='144' height='80' rx='8' ry='8' />
+<path d='M 288 756 L 288 736 Q 288 728 296 728 L 424 728 Q 432 728 432 736 L 432 756 L288 756 ' style='fill:url(#tbg_C7F4BE);stroke-width:0;' />
+<rect class='entity' x='288' y='728' width='144' height='80' rx='8' ry='8' style='fill:none;stroke:#CFE8CB'/>
+<a xlink:href='#spotify.playlist_eliminada'><text x='293' y='747' >playlist_eliminada</text><title>Table spotify.playlist_eliminada</title></a>
+  <use id='nn' x='290' y='765' xlink:href='#nn'/><use id='pk' x='290' y='764' xlink:href='#pk'><title>Pk pk_playlist_eliminada ( playlist_id ) </title></use><text id='spotify.playlist_eliminada.playlist_id' x='307' y='775' onmouseover="hghl(['playlist_eliminada_playlist_eliminada_ibfk_1','spotify.playlist.id'])" onmouseout="uhghl(['playlist_eliminada_playlist_eliminada_ibfk_1','spotify.playlist.id'])">playlist_id</text><title>playlist_id
+* int</title><a xlink:href='#spotify.playlist_eliminada'><use id='fk' x='420' y='764' xlink:href='#fk'/><title>References playlist ( playlist_id -&gt; id ) </title></a>
+  <use id='nn' x='290' y='781' xlink:href='#nn'/><text id='spotify.playlist_eliminada.fecha' x='307' y='791'>fecha</text><title>fecha
+* datetime default &apos;0000-00-00 00:00:00&apos;</title><text x='429' y='788' text-anchor='end' class='colType'>d</text>
+<!-- == Table 'playlist' == -->
+<rect id='depict_spotify.playlist' class='entity' style='stroke:none;' x='48' y='504' width='160' height='128' rx='8' ry='8' />
+<path d='M 48 532 L 48 512 Q 48 504 56 504 L 200 504 Q 208 504 208 512 L 208 532 L48 532 ' style='fill:url(#tbg_C7F4BE);stroke-width:0;' />
+<rect class='entity' x='48' y='504' width='160' height='128' rx='8' ry='8' style='fill:none;stroke:#CFE8CB'/>
+<a xlink:href='#spotify.playlist'><text x='99' y='523' >playlist</text><title>Table spotify.playlist</title></a>
+  <use id='nn' x='50' y='541' xlink:href='#nn'/><use id='pk' x='50' y='540' xlink:href='#pk'><title>Pk pk_playlist ( id ) </title></use><text id='spotify.playlist.id' x='67' y='551' onmouseover="hghl(['playlist_eliminada_playlist_eliminada_ibfk_1','spotify.playlist_eliminada.playlist_id','playlist_item_playlist_item_ibfk_3','spotify.playlist_item.playlist_id'])" onmouseout="uhghl(['playlist_eliminada_playlist_eliminada_ibfk_1','spotify.playlist_eliminada.playlist_id','playlist_item_playlist_item_ibfk_3','spotify.playlist_item.playlist_id'])">id</text><title>id
+* int</title><a xlink:href='#spotify.playlist'><use id='ref' x='196' y='540' xlink:href='#ref'/><title>Referred by playlist_eliminada ( playlist_id -&gt; id ) 
+Referred by playlist_item ( playlist_id -&gt; id ) </title></a>
+  <use id='nn' x='50' y='557' xlink:href='#nn'/><text id='spotify.playlist.titulo' x='67' y='567'>titulo</text><title>titulo
+* varchar(250)</title><text x='205' y='564' text-anchor='end' class='colType'>t</text>  <use id='nn' x='50' y='573' xlink:href='#nn'/><text id='spotify.playlist.total_canciones' x='67' y='583'>total_canciones</text><title>total_canciones
+* smallint</title><text x='205' y='580' text-anchor='end' class='colType'>#</text>  <use id='nn' x='50' y='589' xlink:href='#nn'/><text id='spotify.playlist.fecha_creacion' x='67' y='599'>fecha_creacion</text><title>fecha_creacion
+* datetime default &apos;0000-00-00 00:00:00&apos;</title><text x='205' y='596' text-anchor='end' class='colType'>d</text>  <use id='nn' x='50' y='605' xlink:href='#nn'/><use id='idx' x='50' y='604' xlink:href='#idx'><title>usuario_id ( usuario_id ) </title></use><text id='spotify.playlist.usuario_id' x='67' y='615' onmouseover="hghl(['playlist_playlist_ibfk_1','spotify.usuario.id'])" onmouseout="uhghl(['playlist_playlist_ibfk_1','spotify.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#spotify.playlist'><use id='fk' x='196' y='604' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+
+<!-- == Table 'cuenta_pago_paypal' == -->
+<rect id='depict_spotify.cuenta_pago_paypal' class='entity' style='stroke:none;' x='1184' y='40' width='160' height='80' rx='8' ry='8' />
+<path d='M 1184 68 L 1184 48 Q 1184 40 1192 40 L 1336 40 Q 1344 40 1344 48 L 1344 68 L1184 68 ' style='fill:url(#tbg_BED3F4);stroke-width:0;' />
+<rect class='entity' x='1184' y='40' width='160' height='80' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#spotify.cuenta_pago_paypal'><text x='1187' y='59' >cuenta_pago_paypal</text><title>Table spotify.cuenta_pago_paypal</title></a>
+  <use id='nn' x='1186' y='77' xlink:href='#nn'/><use id='pk' x='1186' y='76' xlink:href='#pk'><title>Pk pk_cuenta_pago_paypal ( usuario_id ) </title></use><text id='spotify.cuenta_pago_paypal.usuario_id' x='1203' y='87' onmouseover="hghl(['cuenta_pago_paypal_cuenta_pago_paypal_ibfk_1','spotify.usuario.id'])" onmouseout="uhghl(['cuenta_pago_paypal_cuenta_pago_paypal_ibfk_1','spotify.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#spotify.cuenta_pago_paypal'><use id='fk' x='1332' y='76' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+  <use id='nn' x='1186' y='93' xlink:href='#nn'/><text id='spotify.cuenta_pago_paypal.nombre_usuario' x='1203' y='103'>nombre_usuario</text><title>nombre_usuario
+* varchar(250)</title><text x='1341' y='100' text-anchor='end' class='colType'>t</text>
+<!-- == Table 'cuenta_pago_tarjeta_credito' == -->
+<rect id='depict_spotify.cuenta_pago_tarjeta_credito' class='entity' style='stroke:none;' x='1104' y='344' width='224' height='128' rx='8' ry='8' />
+<path d='M 1104 372 L 1104 352 Q 1104 344 1112 344 L 1320 344 Q 1328 344 1328 352 L 1328 372 L1104 372 ' style='fill:url(#tbg_BED3F4);stroke-width:0;' />
+<rect class='entity' x='1104' y='344' width='224' height='128' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#spotify.cuenta_pago_tarjeta_credito'><text x='1112' y='363' >cuenta_pago_tarjeta_credito</text><title>Table spotify.cuenta_pago_tarjeta_credito</title></a>
+  <use id='nn' x='1106' y='381' xlink:href='#nn'/><use id='pk' x='1106' y='380' xlink:href='#pk'><title>Pk pk_cuenta_pago_tarjeta_credito ( usuario_id ) </title></use><text id='spotify.cuenta_pago_tarjeta_credito.usuario_id' x='1123' y='391' onmouseover="hghl(['cuenta_pago_tarjeta_credito_cuenta_pago_tarjeta_credito_ibfk_1','spotify.usuario.id'])" onmouseout="uhghl(['cuenta_pago_tarjeta_credito_cuenta_pago_tarjeta_credito_ibfk_1','spotify.usuario.id'])">usuario_id</text><title>usuario_id
+* int</title><a xlink:href='#spotify.cuenta_pago_tarjeta_credito'><use id='fk' x='1316' y='380' xlink:href='#fk'/><title>References usuario ( usuario_id -&gt; id ) </title></a>
+  <use id='nn' x='1106' y='397' xlink:href='#nn'/><text id='spotify.cuenta_pago_tarjeta_credito.numero' x='1123' y='407'>numero</text><title>numero
+* bigint</title><text x='1325' y='404' text-anchor='end' class='colType'>#</text>  <use id='nn' x='1106' y='413' xlink:href='#nn'/><text id='spotify.cuenta_pago_tarjeta_credito.caducidad_mes' x='1123' y='423'>caducidad_mes</text><title>caducidad_mes
+* tinyint</title><text x='1325' y='420' text-anchor='end' class='colType'>#</text>  <use id='nn' x='1106' y='429' xlink:href='#nn'/><text id='spotify.cuenta_pago_tarjeta_credito.caducidad_año' x='1123' y='439'>caducidad_año</text><title>caducidad_año
+* year(4)</title><text x='1325' y='436' text-anchor='end' class='colType'>#</text>  <use id='nn' x='1106' y='445' xlink:href='#nn'/><text id='spotify.cuenta_pago_tarjeta_credito.cvv' x='1123' y='455'>cvv</text><title>cvv
+* smallint</title><text x='1325' y='452' text-anchor='end' class='colType'>#</text>
+</g></svg>

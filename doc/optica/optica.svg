@@ -1,0 +1,415 @@
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   width='1392' height='574' viewBox='0 0 1392 574' >
+  <script type='text/ecmascript'>
+  <![CDATA[
+  function hghl(el) { for ( var i in el ){ var elem = document.getElementById(el[i]); if ( elem != null ) elem.setAttribute('class','highlight');  }  }
+  function uhghl(el) { for ( var i in el ){ var elem = document.getElementById(el[i]); if ( elem != null ) elem.setAttribute('class','unhighlight'); }  } 
+  ]]>
+  </script> 
+
+<style type='text/css'>
+  text                { fill:#000000; font-family: System, 'Trebuchet MS', Dialog; font-size:14.083333015441895px; }
+  a text:hover        { fill:#0d196f; text-shadow: 0px 0px 6px #d0ce00; font-size:13px; font-weight: bold;}
+  text.highlight      { fill:#0d196f; text-shadow: 0px 0px 4px #eac533; font-size:13px; font-weight: bold;}
+  text.white          { fill:#ffffff; }
+  text.colType        { fill:#b3b3b3; }
+  text.relName        { fill:#9c9a9a; }
+  text.legendTitle    { fill:#d65c68; font-weight:bold; }
+  text.legendSubTitle { fill:#717171; font-size:11px; }
+  path                { stroke:#928c7e; stroke-width:1.25; fill:none; }
+  path.virtual        { stroke:#a364b5; }
+  path.logo           { fill:#fbeac0;fill-opacity:1;stroke-width:0.3;stroke:#222222; }
+  path.dotted         { stroke-dasharray:4,2; }
+  path.unhighlight    { stroke-width:10; opacity:0; }
+  path.highlight      { stroke-width:3; stroke:#0054c5; opacity:0.8; }
+  path.line           { stroke-width:10; stroke-linecap:round; stroke-linejoin:round; }
+  rect.entity         { fill:#ffffff; stroke:#777; stroke-width:0;shape-rendering:crispEdges; filter:url(#shadow); }
+  line.delim          { stroke-width:1; shape-rendering:crispEdges; }
+  text.callout        { fill:#000000; font-family: System, 'Trebuchet MS', Dialog; font-size:14.625px; }
+  rect.callout        { fill:url(#calloutGradient); stroke:#bebdbd; stroke-width:0.5; }
+  rect.shape          { stroke:#bebdbd; stroke-width:0.5; }
+  rect.grp            { stroke:#a1a1a1; stroke-width:3; opacity:0.35; }
+  path.bgPattern      { fill:none;stroke-width:0.6;stroke:#e5e9ed; }
+  rect.palpable       { fill:#fffbe5; }
+</style>
+<defs>
+  <radialGradient id='layoutBgB' cx='100%' cy='100%' r='100%'  >
+    <stop offset='0%' stop-color='#dfdfdf' />
+    <stop offset='100%' stop-color='#f2f2f2' />
+  </radialGradient>
+  <pattern id="layoutBgA" width="60" height="34.64" patternUnits="userSpaceOnUse">
+    <rect width="100%" height="100%" fill="#f5f5f5" />
+    <path class='bgPattern' d='M 0 17.32 L 10 0 L 30 0 L 40 17.326 L 30 34.64 L 10 34.64 Z' />
+    <path class='bgPattern' d='M 40 17.32 L 60 17.32 Z' />
+  </pattern>
+  <!-- https://norbat.de/svg-pattern-3d-webmuster/ -->
+  <linearGradient id='groupUnderTitleLine' x1='0%' y1='0%' x2='100%' y2='0%' >
+    <stop offset='0%' stop-color='#999999' stop-opacity='0.7'/>
+    <stop offset='100%' stop-color='#999999' stop-opacity='0' />
+  </linearGradient>
+  <radialGradient id='calloutGradient' cx='25%' cy='20%' r='80%' fx='10%' fy='10%'>
+    <stop offset='0%' stop-color='#ffffff' />
+    <stop offset='100%' stop-color='#f8f6d1' />
+  </radialGradient>
+  <filter id="shadow" width="120%" height="120%">
+    <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#333" flood-opacity="0.2" />
+  </filter>
+  <!--
+  <filter id='shadow2' width='120%' height='120%'>
+    <feOffset result='offOut' in='SourceGraphic' dx='0' dy='0' />
+    <feColorMatrix result='matrixOut' in='offOut'
+                   values='0.5 0 0 0 0 0 0.5 0 0 0 0 0 0.5 0 0 0 0 0 0.5 0' />
+    <feGaussianBlur result='blurOut' in='matrixOut' stdDeviation='3' />
+    <feBlend in='SourceGraphic' in2='blurOut' />
+  </filter>
+  -->
+  <filter id='fkShadow' height='130%'>
+    <feGaussianBlur in='SourceAlpha' stdDeviation='1.5'/> <!-- stdDeviation is how much to blur -->
+    <feOffset dx='1.2' dy='1.2' result='offsetblur'/> <!-- how much to offset -->
+    <feMerge>
+      <feMergeNode/> <!-- this contains the offset blurred image -->
+      <feMergeNode in='SourceGraphic'/> <!-- this contains the element that the filter is applied to -->
+    </feMerge>
+  </filter>
+  <radialGradient id='legendGradient' cx='5%' cy='5%' r='100%' >
+    <stop offset='0%' stop-color='#e4eeff' stop-opacity='1'/>
+    <stop offset='100%' stop-color='#c3d2ea' stop-opacity='1' />
+  </radialGradient>
+  <symbol id='calloutArrowDown' >
+    <path d='M 0,0 L 8,12 L 16,0 z' style='fill:#f8f6d1;stroke:none; filter: url(#shadow);' />
+    <path d='M 0,0 L 8,12 L 16,0' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='calloutArrowUp' >
+    <path d='M 0,16 L 8,4 L 16,16 z' style='fill:#ffffff; stroke:none; filter: url(#shadow);' />
+    <path d='M 0,16 L 8,4 L 16,16' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='pk' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <path style='fill:#f0d938;stroke:#906b25;stroke-width:0.6;stroke-linecap:round;stroke-linejoin:round;'
+            d='M 9.3678877,3.5695485 C 9.1030218,3.2729386 9.0796382,2.7628519 9.3396185,2.4517097 9.5449651,2.1956495 9.9040386,2.0980533 10.199638,2.2169415 10.533525,2.3415459 10.775153,2.706942 10.750675,3.0842709 10.737029,3.3980003 10.541153,3.699122 10.258248,3.8066067 9.966649,3.9250429 9.6169668,3.8418805 9.4008073,3.6062324 9.3894892,3.5943518 9.3785264,3.582104 9.3678886,3.5695487 z M 11.226617,6.9916004 C 11.888137,6.3548946 12.293488,5.4172188 12.311087,4.442353 12.378144,2.7379364 11.248678,1.0541269 9.7322318,0.44767357 8.3887112,-0.1280313 6.7865012,0.26822889 5.8918395,1.4007929 5.080823,2.3839145 4.9336815,3.8452096 5.3635544,5.101615 L 4.3670905,5.315913 C 4.0664984,5.3682645 4.0967703,5.6316724 4.2574957,5.8208829 L 4.9124,6.5655244 4.1543436,7.2512357 3.2136002,7.2163506 3.1674775,8.5586827 2.0406832,8.5086512 1.5965306,8.9299953 1.5471661,10.179833 0.75616674,10.195223 0.2112857,10.758575 0.15354288,11.735988 0.07199052,12.765553 c 0.36440953,0.238225 0.79006967,0.195492 1.44938278,-0.02675 L 6.3033562,8.1282037 6.8217102,8.6765688 C 6.9985465,8.8799427 7.3003699,8.7497574 7.358381,8.5016252 L 7.4938877,7.5084164 c 0.8537488,0.3985387 1.8303125,0.4711541 2.6851793,0.1427713 0.393927,-0.1407258 0.746858,-0.3701772 1.04755,-0.6595873 z'/>
+      <path d='M 6.8014948,6.3102123 0.15369063,13.024481 0.21560535,12.141962 6.0062342,6.2683782 z'
+            style='fill:#ffe5a5;fill-opacity:1;stroke:#906b25;stroke-width:0.06912433;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:3.00300009'/>
+    </g>
+  </symbol>
+  <symbol id='idx1' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <rect width='4' height='4' x='7' y='1' style='fill:#ffff3f;stroke:#b48333;stroke-width:0.6;' ry='0.83'/>
+      <rect width='4' height='4' x='1' y='7' style='fill:#ffff3f;stroke:#b48333;stroke-width:0.6;' ry='0.832'/>
+      <rect width='4' height='4' x='7' y='7' style='fill:#ffff3f;stroke:#b48333;stroke-width:0.6;' ry='0.832'/>
+    </g>
+  </symbol>
+  <symbol id='idx2' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <rect width='4' height='3' x='6' y='1' style='fill:#7fc8e9;stroke:#2f6f8c;stroke-width:0.6;' ry='0.83'/>
+      <rect width='7' height='3' x='3' y='6' style='fill:#7fc8e9;stroke:#2f6f8c;stroke-width:0.6;' ry='0.832'/>
+    </g>
+  </symbol>
+  <symbol id='unq' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <rect style='fill:none;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+            width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+            transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+      <text x='5.8' y='7.4' style='font-size:7px;fill:#8a8a8a;'>1</text>
+    </g>
+  </symbol>
+  <symbol id='idx' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <rect style='fill:none;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+            width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+            transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+    </g>
+  </symbol>
+  <symbol id='fk' width="13" height="13">
+    <g transform='scale(0.87)'>
+      <path style='fill:#6a88cd;stroke:#5a72a8;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 12.48,0.33 7.07,0.89 9.067,2.974 0.329,11.731 1.073,12.597 9.811,3.841 11.77,5.78 z' />
+    </g>
+  </symbol>
+  <symbol id='ref' width="13" height="13">
+    <g transform='scale(0.87)'>
+      <path style='fill:#f0d938;stroke:#906b25;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 0.10,12.70 5.31,12.15 3.40,10.06 11.82,1.32 11.11,0.45 2.68,9.19 0.80,7.24 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag0' width="13" height="13">
+    <g transform='scale(0.92)'>
+      <path style='fill:#b7d0f6;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag1' width="13" height="13">
+    <g transform='scale(0.92)'>
+      <path style='fill:#f4a393;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag2' width="13" height="13">
+    <g transform='scale(0.92)'>
+      <path style='fill:#77ec8b;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='nn' width="3" height="3">
+    <path style='stroke:#9b3e50;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0,0 3,3 M 0,3 3,0 z'/>
+  </symbol>
+  <symbol id='virtual' width="13" height="13">
+    <circle cx='6' cy='6.5' r='5.5' fill='#a3dda3' stroke='#4c6a4c' stroke-width='0.5'/>
+    <path style='stroke:#ffffff;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 3,4 6,10 9,4'/>
+  </symbol>
+  <symbol id='view' width="13" height="13">
+    <g transform='scale(0.99)'>
+      <line x1='12' y1='6' x2='19' y2='0' stroke='black' stroke-width='0.5' />
+      <line x1='0' y1='6' x2='7' y2='0' stroke='black' stroke-width='0.5' />
+      <circle cx='3' cy='6' r='3' fill='#f9ebbc' stroke='black' stroke-width='0.5'/>
+      <circle cx='10' cy='6' r='3' fill='#f9ebbc' stroke='black' stroke-width='0.5'/>
+    </g>
+  </symbol>
+
+</defs>
+
+<defs>  <marker id='arrow0u' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 8.000,4.000 L 16.000,4.000 L 8.000,0.000 L 16.000,4.000 L 8.000,8.000' />
+  </marker>
+  <marker id='arrow1u' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 8.000,4.000 L 16.000,4.000 L 8.000,0.000 L 16.000,4.000 L 8.000,8.000' />
+  </marker>
+  <marker id='arrow0' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <circle cx='4.00' cy='4.00' r='2.67' style='fill:white;stroke:#5e554d;' />
+    <path d='M 16.00,0.00 L 8.00,4.00 L 16.00,8.00' />
+  </marker>
+  <marker id='arrow1' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <path d='M 16.00,0.00 L 8.00,4.00 L 16.00,8.00' />
+  </marker>
+  <marker id='foot0u' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <circle cx='12.00' cy='4.00' r='2.67' style='fill:white;stroke:#5e554d;' />
+    <path d='M 4.00,0.00 L 4.00, 8.00 z' />
+  </marker>
+  <marker id='foot0' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <circle cx='12.00' cy='4.00' r='2.67' style='fill:white;stroke:#5e554d;' />
+    <path d='M 0.00,0.00 L 8.00,4.00 L 0.00,8.00' />
+  </marker>
+  <marker id='foot1u' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <path d='M 8.00,0.00 L 8.00, 8.00 z' />
+    <path d='M 4.00,0.00 L 4.00, 8.00 z' />
+  </marker>
+  <marker id='foot1' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <path d='M 8.00,0.00 L 8.00, 8.00 z' />
+    <path d='M 0.00,0.00 L 8.00,4.00 L 0.00,8.00' />
+  </marker>
+  <marker id='line_arrow' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 8.000,4.000 L 16.000,4.000 L 8.000,0.000 L 16.000,4.000 L 8.000,8.000' />
+  </marker>
+  <marker id='line_straight' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+  </marker>
+  <linearGradient id='tbg_BED3F4' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#EAF2FF' /> 
+     <stop offset='40%' stop-color='#C9D2E2' /> 
+     <stop offset='100%' stop-color='#E7F0FF' /> 
+  </linearGradient>
+  <linearGradient id='tbg_C7F4BE' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#EDFFEA' /> 
+     <stop offset='40%' stop-color='#CDE2C9' /> 
+     <stop offset='100%' stop-color='#EBFFE7' /> 
+  </linearGradient>
+</defs>
+
+<!-- == Shape Colors == -->
+<!-- == Desktop == -->
+<rect x='1' y='1' width='1390' height='572' rx='8' ry='8' style='fill:url(#layoutBgA); stroke:#aaa; stroke-width:1px;' />
+<rect x='1' y='1' width='1390' height='572' rx='8' ry='8' style='fill:url(#layoutBgTr);' />
+
+<!-- == Legend == -->
+<g transform='translate(10,10)'>
+  <rect x='10' y='10' width='420' height='70' rx='6' ry='6' style='fill:url(#legendGradient);filter:url(#shadow);'/> 
+  <text x='20' y='25' class='legendTitle' >optica</text> 
+  <a xlink:href='https://dbschema.com'><text x='20' y='39' class='legendSubTitle'><tspan>(c) DbSchema</tspan></text></a> 
+  <text x='20' y='53' class='legendSubTitle'><tspan>Read table and column comments as mouse-over tooltips.</tspan></text> 
+  <text x='20' y='67' class='legendSubTitle'><tspan>Zoom ~ Ctrl + mouse wheel, panning ~ drag + right-mouse button.</tspan></text> 
+</g>
+
+<g transform='translate(0,110)'>
+<!-- == Fk 'cliente_cliente_ibfk_1' == -->
+<path id='cliente_cliente_ibfk_1'  onmouseover="hghl(['cliente_cliente_ibfk_1','optica.cliente.recomendador_id','optica.cliente.id'])" onmouseout="uhghl(['cliente_cliente_ibfk_1','optica.cliente.recomendador_id','optica.cliente.id'])" transform='translate(8,0)' class='unhighlight' d='M 656,192L 664,192Q 672,192 672,200L 672,216Q 672,224 664,224L 648,224Q 640,224 640,216L 640,208' >
+	<title>Fk cliente_ibfk_1
+cliente ref cliente ( recomendador_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot0)' marker-end='url(#arrow1u)'  class='dotted '  d='M 656,192L 664,192Q 672,192 672,200L 672,216Q 672,224 664,224L 648,224Q 640,224 640,216L 640,208' ><title>Fk cliente_ibfk_1
+cliente ref cliente ( recomendador_id -&gt; id )</title></path>
+<text x='666' y='187' transform='rotate(0 666,187)' class='relName'>recomendador_id</text>
+<!-- == Fk 'gafas_gafas_ibfk_1' == -->
+<path id='gafas_gafas_ibfk_1'  onmouseover="hghl(['gafas_gafas_ibfk_1','optica.gafas.marca_id','optica.marca.id'])" onmouseout="uhghl(['gafas_gafas_ibfk_1','optica.gafas.marca_id','optica.marca.id'])" transform='translate(8,0)' class='unhighlight' d='M 928,64L 992,64' >
+	<title>Fk gafas_ibfk_1
+gafas ref marca ( marca_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 928,64L 992,64' ><title>Fk gafas_ibfk_1
+gafas ref marca ( marca_id -&gt; id )</title></path>
+<text x='938' y='59' transform='rotate(0 938,59)' class='relName'>marca_id</text>
+<!-- == Fk 'gafas_gafas_ibfk_2' == -->
+<path id='gafas_gafas_ibfk_2'  onmouseover="hghl(['gafas_gafas_ibfk_2','optica.gafas.montura_tipo_id','optica.montura_tipo.id'])" onmouseout="uhghl(['gafas_gafas_ibfk_2','optica.gafas.montura_tipo_id','optica.montura_tipo.id'])" transform='translate(8,0)' class='unhighlight' d='M 912,240L 912,328Q 912,336 920,336L 992,336' >
+	<title>Fk gafas_ibfk_2
+gafas ref montura_tipo ( montura_tipo_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 912,240L 912,328Q 912,336 920,336L 992,336' ><title>Fk gafas_ibfk_2
+gafas ref montura_tipo ( montura_tipo_id -&gt; id )</title></path>
+<text x='925' y='242' transform='rotate(90 925,242)' class='relName'>montura_tipo_id</text>
+<!-- == Fk 'marca_marca_ibfk_1' == -->
+<path id='marca_marca_ibfk_1'  onmouseover="hghl(['marca_marca_ibfk_1','optica.marca.proveedor_id','optica.proveedor.id'])" onmouseout="uhghl(['marca_marca_ibfk_1','optica.marca.proveedor_id','optica.proveedor.id'])" transform='translate(8,0)' class='unhighlight' d='M 1152,64L 1216,64' >
+	<title>Fk marca_ibfk_1
+marca ref proveedor ( proveedor_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 1152,64L 1216,64' ><title>Fk marca_ibfk_1
+marca ref proveedor ( proveedor_id -&gt; id )</title></path>
+<text x='1162' y='59' transform='rotate(0 1162,59)' class='relName'>proveedor_id</text>
+<!-- == Fk 'venta_venta_ibfk_2' == -->
+<path id='venta_venta_ibfk_2'  onmouseover="hghl(['venta_venta_ibfk_2','optica.venta.cliente_id','optica.cliente.id'])" onmouseout="uhghl(['venta_venta_ibfk_2','optica.venta.cliente_id','optica.cliente.id'])" transform='translate(8,0)' class='unhighlight' d='M 400,64L 464,64' >
+	<title>Fk venta_ibfk_2
+venta ref cliente ( cliente_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 400,64L 464,64' ><title>Fk venta_ibfk_2
+venta ref cliente ( cliente_id -&gt; id )</title></path>
+<text x='410' y='59' transform='rotate(0 410,59)' class='relName'>cliente_id</text>
+<!-- == Fk 'venta_venta_ibfk_1' == -->
+<path id='venta_venta_ibfk_1'  onmouseover="hghl(['venta_venta_ibfk_1','optica.venta.empleado_id','optica.empleado.id'])" onmouseout="uhghl(['venta_venta_ibfk_1','optica.venta.empleado_id','optica.empleado.id'])" transform='translate(8,0)' class='unhighlight' d='M 240,128L 152,128Q 144,128 144,136L 144,240' >
+	<title>Fk venta_ibfk_1
+venta ref empleado ( empleado_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 240,128L 152,128Q 144,128 144,136L 144,240' ><title>Fk venta_ibfk_1
+venta ref empleado ( empleado_id -&gt; id )</title></path>
+<text x='161' y='123' transform='rotate(0 161,123)' class='relName'>empleado_id</text>
+<!-- == Fk 'venta_detalle_venta_detalle_ibfk_2' == -->
+<path id='venta_detalle_venta_detalle_ibfk_2'  onmouseover="hghl(['venta_detalle_venta_detalle_ibfk_2','optica.venta_detalle.gafas_id','optica.gafas.id'])" onmouseout="uhghl(['venta_detalle_venta_detalle_ibfk_2','optica.venta_detalle.gafas_id','optica.gafas.id'])" transform='translate(8,0)' class='unhighlight' d='M 368,272L 776,272Q 784,272 784,264L 784,240' >
+	<title>Fk venta_detalle_ibfk_2
+venta_detalle ref gafas ( gafas_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 368,272L 776,272Q 784,272 784,264L 784,240' ><title>Fk venta_detalle_ibfk_2
+venta_detalle ref gafas ( gafas_id -&gt; id )</title></path>
+<text x='378' y='267' transform='rotate(0 378,267)' class='relName'>gafas_id</text>
+<!-- == Fk 'venta_detalle_venta_detalle_ibfk_1' == -->
+<path id='venta_detalle_venta_detalle_ibfk_1'  onmouseover="hghl(['venta_detalle_venta_detalle_ibfk_1','optica.venta_detalle.venta_id','optica.venta.id'])" onmouseout="uhghl(['venta_detalle_venta_detalle_ibfk_1','optica.venta_detalle.venta_id','optica.venta.id'])" transform='translate(8,0)' class='unhighlight' d='M 272,240L 272,160' >
+	<title>Fk venta_detalle_ibfk_1
+venta_detalle ref venta ( venta_id -&gt; id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1)' marker-end='url(#arrow1u)'    d='M 272,240L 272,160' ><title>Fk venta_detalle_ibfk_1
+venta_detalle ref venta ( venta_id -&gt; id )</title></path>
+<text x='275' y='238' transform='rotate(270 275,238)' class='relName'>venta_id</text>
+<!-- == Table 'cliente' == -->
+<rect id='depict_optica.cliente' class='entity' style='stroke:none;' x='480' y='40' width='176' height='160' rx='8' ry='8' />
+<path d='M 480 68 L 480 48 Q 480 40 488 40 L 648 40 Q 656 40 656 48 L 656 68 L480 68 ' style='fill:url(#tbg_BED3F4);stroke-width:0;' />
+<rect class='entity' x='480' y='40' width='176' height='160' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#optica.cliente'><text x='540' y='59' >cliente</text><title>Table optica.cliente</title></a>
+  <use id='nn' x='482' y='77' xlink:href='#nn'/><use id='pk' x='482' y='76' xlink:href='#pk'><title>Pk pk_cliente ( id ) </title></use><text id='optica.cliente.id' x='499' y='87' onmouseover="hghl(['cliente_cliente_ibfk_1','optica.cliente.recomendador_id','venta_venta_ibfk_2','optica.venta.cliente_id'])" onmouseout="uhghl(['cliente_cliente_ibfk_1','optica.cliente.recomendador_id','venta_venta_ibfk_2','optica.venta.cliente_id'])">id</text><title>id
+* int</title><a xlink:href='#optica.cliente'><use id='ref' x='644' y='76' xlink:href='#ref'/><title>Referred by cliente ( recomendador_id -&gt; id ) 
+Referred by venta ( cliente_id -&gt; id ) </title></a>
+  <use id='nn' x='482' y='93' xlink:href='#nn'/><text id='optica.cliente.nombre' x='499' y='103'>nombre</text><title>nombre
+* varchar(50)</title><text x='653' y='100' text-anchor='end' class='colType'>t</text>  <use id='nn' x='482' y='109' xlink:href='#nn'/><text id='optica.cliente.direccion' x='499' y='119'>direccion</text><title>direccion
+* varchar(50)</title><text x='653' y='116' text-anchor='end' class='colType'>t</text>  <text id='optica.cliente.telefono' x='499' y='135'>telefono</text><title>telefono
+varchar(16)</title><text x='653' y='132' text-anchor='end' class='colType'>t</text>  <use id='nn' x='482' y='141' xlink:href='#nn'/><text id='optica.cliente.email' x='499' y='151'>email</text><title>email
+* varchar(50)</title><text x='653' y='148' text-anchor='end' class='colType'>t</text>  <use id='nn' x='482' y='157' xlink:href='#nn'/><text id='optica.cliente.registro' x='499' y='167'>registro</text><title>registro
+* datetime default &apos;0000-00-00 00:00:00&apos;</title><text x='653' y='164' text-anchor='end' class='colType'>d</text>  <use id='idx' x='482' y='172' xlink:href='#idx'><title>recomendador ( recomendador_id ) </title></use><text id='optica.cliente.recomendador_id' x='499' y='183' onmouseover="hghl(['cliente_cliente_ibfk_1','optica.cliente.id'])" onmouseout="uhghl(['cliente_cliente_ibfk_1','optica.cliente.id'])">recomendador_id</text><title>recomendador_id
+int</title><a xlink:href='#optica.cliente'><use id='fk' x='644' y='172' xlink:href='#fk'/><title>References cliente ( recomendador_id -&gt; id ) </title></a>
+
+<!-- == Table 'empleado' == -->
+<rect id='depict_optica.empleado' class='entity' style='stroke:none;' x='48' y='248' width='112' height='96' rx='8' ry='8' />
+<path d='M 48 276 L 48 256 Q 48 248 56 248 L 152 248 Q 160 248 160 256 L 160 276 L48 276 ' style='fill:url(#tbg_BED3F4);stroke-width:0;' />
+<rect class='entity' x='48' y='248' width='112' height='96' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#optica.empleado'><text x='65' y='267' >empleado</text><title>Table optica.empleado</title></a>
+  <use id='nn' x='50' y='285' xlink:href='#nn'/><use id='pk' x='50' y='284' xlink:href='#pk'><title>Pk pk_empleado ( id ) </title></use><text id='optica.empleado.id' x='67' y='295' onmouseover="hghl(['venta_venta_ibfk_1','optica.venta.empleado_id'])" onmouseout="uhghl(['venta_venta_ibfk_1','optica.venta.empleado_id'])">id</text><title>id
+* int</title><a xlink:href='#optica.empleado'><use id='ref' x='148' y='284' xlink:href='#ref'/><title>Referred by venta ( empleado_id -&gt; id ) </title></a>
+  <use id='nn' x='50' y='301' xlink:href='#nn'/><use id='unq' x='50' y='300' xlink:href='#unq'><title>Unq UNIQUE_dni_o_nie ( dni_o_nie ) </title></use><text id='optica.empleado.dni_o_nie' x='67' y='311'>dni_o_nie</text><title>dni_o_nie
+* varchar(10)</title><text x='157' y='308' text-anchor='end' class='colType'>t</text>  <use id='nn' x='50' y='317' xlink:href='#nn'/><text id='optica.empleado.nombre' x='67' y='327'>nombre</text><title>nombre
+* varchar(50)</title><text x='157' y='324' text-anchor='end' class='colType'>t</text>
+<!-- == Table 'gafas' == -->
+<rect id='depict_optica.gafas' class='entity' style='stroke:none;' x='768' y='40' width='160' height='192' rx='8' ry='8' />
+<path d='M 768 68 L 768 48 Q 768 40 776 40 L 920 40 Q 928 40 928 48 L 928 68 L768 68 ' style='fill:url(#tbg_C7F4BE);stroke-width:0;' />
+<rect class='entity' x='768' y='40' width='160' height='192' rx='8' ry='8' style='fill:none;stroke:#CFE8CB'/>
+<a xlink:href='#optica.gafas'><text x='825' y='59' >gafas</text><title>Table optica.gafas</title></a>
+  <use id='nn' x='770' y='77' xlink:href='#nn'/><use id='pk' x='770' y='76' xlink:href='#pk'><title>Pk pk_gafas ( id ) </title></use><text id='optica.gafas.id' x='787' y='87' onmouseover="hghl(['venta_detalle_venta_detalle_ibfk_2','optica.venta_detalle.gafas_id'])" onmouseout="uhghl(['venta_detalle_venta_detalle_ibfk_2','optica.venta_detalle.gafas_id'])">id</text><title>id
+* int</title><a xlink:href='#optica.gafas'><use id='ref' x='916' y='76' xlink:href='#ref'/><title>Referred by venta_detalle ( gafas_id -&gt; id ) </title></a>
+  <use id='nn' x='770' y='93' xlink:href='#nn'/><use id='idx' x='770' y='92' xlink:href='#idx'><title>marca_id ( marca_id ) </title></use><text id='optica.gafas.marca_id' x='787' y='103' onmouseover="hghl(['gafas_gafas_ibfk_1','optica.marca.id'])" onmouseout="uhghl(['gafas_gafas_ibfk_1','optica.marca.id'])">marca_id</text><title>marca_id
+* int</title><a xlink:href='#optica.gafas'><use id='fk' x='916' y='92' xlink:href='#fk'/><title>References marca ( marca_id -&gt; id ) </title></a>
+  <use id='nn' x='770' y='109' xlink:href='#nn'/><text id='optica.gafas.graduacion_d' x='787' y='119'>graduacion_d</text><title>graduacion_d
+* decimal(2,1)</title><text x='925' y='116' text-anchor='end' class='colType'>#</text>  <use id='nn' x='770' y='125' xlink:href='#nn'/><text id='optica.gafas.graduacion_i' x='787' y='135'>graduacion_i</text><title>graduacion_i
+* decimal(2,1)</title><text x='925' y='132' text-anchor='end' class='colType'>#</text>  <use id='nn' x='770' y='141' xlink:href='#nn'/><use id='idx' x='770' y='140' xlink:href='#idx'><title>montura_tipo_id ( montura_tipo_id ) </title></use><text id='optica.gafas.montura_tipo_id' x='787' y='151' onmouseover="hghl(['gafas_gafas_ibfk_2','optica.montura_tipo.id'])" onmouseout="uhghl(['gafas_gafas_ibfk_2','optica.montura_tipo.id'])">montura_tipo_id</text><title>montura_tipo_id
+* int</title><a xlink:href='#optica.gafas'><use id='fk' x='916' y='140' xlink:href='#fk'/><title>References montura_tipo ( montura_tipo_id -&gt; id ) </title></a>
+  <use id='nn' x='770' y='157' xlink:href='#nn'/><text id='optica.gafas.montura_color' x='787' y='167'>montura_color</text><title>montura_color
+* varchar(12)</title><text x='925' y='164' text-anchor='end' class='colType'>t</text>  <text id='optica.gafas.vidrio_d_color' x='787' y='183'>vidrio_d_color</text><title>vidrio_d_color
+varchar(12)</title><text x='925' y='180' text-anchor='end' class='colType'>t</text>  <text id='optica.gafas.vidrio_i_color' x='787' y='199'>vidrio_i_color</text><title>vidrio_i_color
+varchar(12)</title><text x='925' y='196' text-anchor='end' class='colType'>t</text>  <use id='nn' x='770' y='205' xlink:href='#nn'/><text id='optica.gafas.precio' x='787' y='215'>precio</text><title>precio
+* decimal(7,2)</title><text x='925' y='212' text-anchor='end' class='colType'>#</text>
+<!-- == Table 'marca' == -->
+<rect id='depict_optica.marca' class='entity' style='stroke:none;' x='1008' y='40' width='144' height='96' rx='8' ry='8' />
+<path d='M 1008 68 L 1008 48 Q 1008 40 1016 40 L 1144 40 Q 1152 40 1152 48 L 1152 68 L1008 68 ' style='fill:url(#tbg_C7F4BE);stroke-width:0;' />
+<rect class='entity' x='1008' y='40' width='144' height='96' rx='8' ry='8' style='fill:none;stroke:#CFE8CB'/>
+<a xlink:href='#optica.marca'><text x='1054' y='59' >marca</text><title>Table optica.marca</title></a>
+  <use id='nn' x='1010' y='77' xlink:href='#nn'/><use id='pk' x='1010' y='76' xlink:href='#pk'><title>Pk pk_marca ( id ) </title></use><text id='optica.marca.id' x='1027' y='87' onmouseover="hghl(['gafas_gafas_ibfk_1','optica.gafas.marca_id'])" onmouseout="uhghl(['gafas_gafas_ibfk_1','optica.gafas.marca_id'])">id</text><title>id
+* int</title><a xlink:href='#optica.marca'><use id='ref' x='1140' y='76' xlink:href='#ref'/><title>Referred by gafas ( marca_id -&gt; id ) </title></a>
+  <use id='nn' x='1010' y='93' xlink:href='#nn'/><use id='unq' x='1010' y='92' xlink:href='#unq'><title>Unq marca ( nombre ) </title></use><text id='optica.marca.nombre' x='1027' y='103'>nombre</text><title>nombre
+* varchar(50)</title><text x='1149' y='100' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1010' y='109' xlink:href='#nn'/><use id='idx' x='1010' y='108' xlink:href='#idx'><title>proveedor_id ( proveedor_id ) </title></use><text id='optica.marca.proveedor_id' x='1027' y='119' onmouseover="hghl(['marca_marca_ibfk_1','optica.proveedor.id'])" onmouseout="uhghl(['marca_marca_ibfk_1','optica.proveedor.id'])">proveedor_id</text><title>proveedor_id
+* int</title><a xlink:href='#optica.marca'><use id='fk' x='1140' y='108' xlink:href='#fk'/><title>References proveedor ( proveedor_id -&gt; id ) </title></a>
+
+<!-- == Table 'montura_tipo' == -->
+<rect id='depict_optica.montura_tipo' class='entity' style='stroke:none;' x='1008' y='328' width='112' height='80' rx='8' ry='8' />
+<path d='M 1008 356 L 1008 336 Q 1008 328 1016 328 L 1112 328 Q 1120 328 1120 336 L 1120 356 L1008 356 ' style='fill:url(#tbg_C7F4BE);stroke-width:0;' />
+<rect class='entity' x='1008' y='328' width='112' height='80' rx='8' ry='8' style='fill:none;stroke:#CFE8CB'/>
+<a xlink:href='#optica.montura_tipo'><text x='1013' y='347' >montura_tipo</text><title>Table optica.montura_tipo</title></a>
+  <use id='nn' x='1010' y='365' xlink:href='#nn'/><use id='pk' x='1010' y='364' xlink:href='#pk'><title>Pk pk_montura_tipo ( id ) </title></use><text id='optica.montura_tipo.id' x='1027' y='375' onmouseover="hghl(['gafas_gafas_ibfk_2','optica.gafas.montura_tipo_id'])" onmouseout="uhghl(['gafas_gafas_ibfk_2','optica.gafas.montura_tipo_id'])">id</text><title>id
+* int</title><a xlink:href='#optica.montura_tipo'><use id='ref' x='1108' y='364' xlink:href='#ref'/><title>Referred by gafas ( montura_tipo_id -&gt; id ) </title></a>
+  <use id='nn' x='1010' y='381' xlink:href='#nn'/><use id='unq' x='1010' y='380' xlink:href='#unq'><title>Unq nombre ( nombre ) </title></use><text id='optica.montura_tipo.nombre' x='1027' y='391'>nombre</text><title>nombre
+* varchar(50)</title><text x='1117' y='388' text-anchor='end' class='colType'>t</text>
+<!-- == Table 'proveedor' == -->
+<rect id='depict_optica.proveedor' class='entity' style='stroke:none;' x='1232' y='40' width='112' height='240' rx='8' ry='8' />
+<path d='M 1232 68 L 1232 48 Q 1232 40 1240 40 L 1336 40 Q 1344 40 1344 48 L 1344 68 L1232 68 ' style='fill:url(#tbg_C7F4BE);stroke-width:0;' />
+<rect class='entity' x='1232' y='40' width='112' height='240' rx='8' ry='8' style='fill:none;stroke:#CFE8CB'/>
+<a xlink:href='#optica.proveedor'><text x='1248' y='59' >proveedor</text><title>Table optica.proveedor</title></a>
+  <use id='nn' x='1234' y='77' xlink:href='#nn'/><use id='pk' x='1234' y='76' xlink:href='#pk'><title>Pk pk_proveedor ( id ) </title></use><text id='optica.proveedor.id' x='1251' y='87' onmouseover="hghl(['marca_marca_ibfk_1','optica.marca.proveedor_id'])" onmouseout="uhghl(['marca_marca_ibfk_1','optica.marca.proveedor_id'])">id</text><title>id
+* int</title><a xlink:href='#optica.proveedor'><use id='ref' x='1332' y='76' xlink:href='#ref'/><title>Referred by marca ( proveedor_id -&gt; id ) </title></a>
+  <use id='nn' x='1234' y='93' xlink:href='#nn'/><text id='optica.proveedor.nombre' x='1251' y='103'>nombre</text><title>nombre
+* varchar(50)</title><text x='1341' y='100' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1234' y='109' xlink:href='#nn'/><text id='optica.proveedor.calle' x='1251' y='119'>calle</text><title>calle
+* varchar(50)</title><text x='1341' y='116' text-anchor='end' class='colType'>t</text>  <text id='optica.proveedor.numero' x='1251' y='135'>numero</text><title>numero
+smallint</title><text x='1341' y='132' text-anchor='end' class='colType'>#</text>  <text id='optica.proveedor.piso' x='1251' y='151'>piso</text><title>piso
+varchar(12)</title><text x='1341' y='148' text-anchor='end' class='colType'>t</text>  <text id='optica.proveedor.puerta' x='1251' y='167'>puerta</text><title>puerta
+varchar(2)</title><text x='1341' y='164' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1234' y='173' xlink:href='#nn'/><text id='optica.proveedor.ciudad' x='1251' y='183'>ciudad</text><title>ciudad
+* varchar(50)</title><text x='1341' y='180' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1234' y='189' xlink:href='#nn'/><text id='optica.proveedor.cp' x='1251' y='199'>cp</text><title>cp
+* smallint</title><text x='1341' y='196' text-anchor='end' class='colType'>#</text>  <use id='nn' x='1234' y='205' xlink:href='#nn'/><text id='optica.proveedor.pais' x='1251' y='215'>pais</text><title>pais
+* varchar(50)</title><text x='1341' y='212' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1234' y='221' xlink:href='#nn'/><text id='optica.proveedor.telefono' x='1251' y='231'>telefono</text><title>telefono
+* varchar(16)</title><text x='1341' y='228' text-anchor='end' class='colType'>t</text>  <text id='optica.proveedor.fax' x='1251' y='247'>fax</text><title>fax
+varchar(16)</title><text x='1341' y='244' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1234' y='253' xlink:href='#nn'/><use id='unq' x='1234' y='252' xlink:href='#unq'><title>Unq nif ( nif ) </title></use><text id='optica.proveedor.nif' x='1251' y='263'>nif</text><title>nif
+* varchar(10)</title><text x='1341' y='260' text-anchor='end' class='colType'>t</text>
+<!-- == Table 'venta' == -->
+<rect id='depict_optica.venta' class='entity' style='stroke:none;' x='256' y='40' width='144' height='112' rx='8' ry='8' />
+<path d='M 256 68 L 256 48 Q 256 40 264 40 L 392 40 Q 400 40 400 48 L 400 68 L256 68 ' style='fill:url(#tbg_BED3F4);stroke-width:0;' />
+<rect class='entity' x='256' y='40' width='144' height='112' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#optica.venta'><text x='304' y='59' >venta</text><title>Table optica.venta</title></a>
+  <use id='nn' x='258' y='77' xlink:href='#nn'/><use id='pk' x='258' y='76' xlink:href='#pk'><title>Pk pk_venta ( id ) </title></use><text id='optica.venta.id' x='275' y='87' onmouseover="hghl(['venta_detalle_venta_detalle_ibfk_1','optica.venta_detalle.venta_id'])" onmouseout="uhghl(['venta_detalle_venta_detalle_ibfk_1','optica.venta_detalle.venta_id'])">id</text><title>id
+* int</title><a xlink:href='#optica.venta'><use id='ref' x='388' y='76' xlink:href='#ref'/><title>Referred by venta_detalle ( venta_id -&gt; id ) </title></a>
+  <use id='nn' x='258' y='93' xlink:href='#nn'/><use id='idx' x='258' y='92' xlink:href='#idx'><title>empleado_id ( empleado_id ) </title></use><text id='optica.venta.empleado_id' x='275' y='103' onmouseover="hghl(['venta_venta_ibfk_1','optica.empleado.id'])" onmouseout="uhghl(['venta_venta_ibfk_1','optica.empleado.id'])">empleado_id</text><title>empleado_id
+* int</title><a xlink:href='#optica.venta'><use id='fk' x='388' y='92' xlink:href='#fk'/><title>References empleado ( empleado_id -&gt; id ) </title></a>
+  <use id='nn' x='258' y='109' xlink:href='#nn'/><use id='idx' x='258' y='108' xlink:href='#idx'><title>cliente_id ( cliente_id ) </title></use><text id='optica.venta.cliente_id' x='275' y='119' onmouseover="hghl(['venta_venta_ibfk_2','optica.cliente.id'])" onmouseout="uhghl(['venta_venta_ibfk_2','optica.cliente.id'])">cliente_id</text><title>cliente_id
+* int</title><a xlink:href='#optica.venta'><use id='fk' x='388' y='108' xlink:href='#fk'/><title>References cliente ( cliente_id -&gt; id ) </title></a>
+  <use id='nn' x='258' y='125' xlink:href='#nn'/><text id='optica.venta.fecha' x='275' y='135'>fecha</text><title>fecha
+* datetime default &apos;0000-00-00 00:00:00&apos;
+No lo pide el ejercicio</title><text x='397' y='132' text-anchor='end' class='colType'>d</text>
+<!-- == Table 'venta_detalle' == -->
+<rect id='depict_optica.venta_detalle' class='entity' style='stroke:none;' x='256' y='248' width='112' height='96' rx='8' ry='8' />
+<path d='M 256 276 L 256 256 Q 256 248 264 248 L 360 248 Q 368 248 368 256 L 368 276 L256 276 ' style='fill:url(#tbg_BED3F4);stroke-width:0;' />
+<rect class='entity' x='256' y='248' width='112' height='96' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#optica.venta_detalle'><text x='260' y='267' >venta_detalle</text><title>Table optica.venta_detalle</title></a>
+  <use id='nn' x='258' y='285' xlink:href='#nn'/><use id='idx' x='258' y='284' xlink:href='#idx'><title>venta_id ( venta_id ) </title></use><text id='optica.venta_detalle.venta_id' x='275' y='295' onmouseover="hghl(['venta_detalle_venta_detalle_ibfk_1','optica.venta.id'])" onmouseout="uhghl(['venta_detalle_venta_detalle_ibfk_1','optica.venta.id'])">venta_id</text><title>venta_id
+* int</title><a xlink:href='#optica.venta_detalle'><use id='fk' x='356' y='284' xlink:href='#fk'/><title>References venta ( venta_id -&gt; id ) </title></a>
+  <use id='nn' x='258' y='301' xlink:href='#nn'/><use id='idx' x='258' y='300' xlink:href='#idx'><title>gafas_id ( gafas_id ) </title></use><text id='optica.venta_detalle.gafas_id' x='275' y='311' onmouseover="hghl(['venta_detalle_venta_detalle_ibfk_2','optica.gafas.id'])" onmouseout="uhghl(['venta_detalle_venta_detalle_ibfk_2','optica.gafas.id'])">gafas_id</text><title>gafas_id
+* int</title><a xlink:href='#optica.venta_detalle'><use id='fk' x='356' y='300' xlink:href='#fk'/><title>References gafas ( gafas_id -&gt; id ) </title></a>
+  <use id='nn' x='258' y='317' xlink:href='#nn'/><text id='optica.venta_detalle.cantidad' x='275' y='327'>cantidad</text><title>cantidad
+* tinyint</title><text x='365' y='324' text-anchor='end' class='colType'>#</text>
+</g></svg>
