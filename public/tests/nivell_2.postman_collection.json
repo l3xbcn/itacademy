@@ -1,0 +1,215 @@
+{
+	"info": {
+		"_postman_id": "8e1e1b0f-a3e0-4f35-a637-726ecffa3656",
+		"name": "nivell_2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "index países",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/paises",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"paises"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "index departamentos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/paises/{{$randomCountry}}/departamentos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"paises",
+						"{{$randomCountry}}",
+						"departamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show país",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/paises/{{$randomCountry}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"paises",
+						"{{$randomCountry}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show departamentos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/paises/{{$randomCountry}}/departamentos/{{$randomDepartment}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"paises",
+						"{{$randomCountry}}",
+						"departamentos",
+						"{{$randomDepartment}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "destroy país",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/paises/{{$randomCountry}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"paises",
+						"{{$randomCountry}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "destroy departamentos",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/paises/{{$randomCountry}}/departamentos/{{$randomDepartment}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"paises",
+						"{{$randomCountry}}",
+						"departamentos",
+						"{{$randomDepartment}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update país",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/paises/{{$randomCountry}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"paises",
+						"{{$randomCountry}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update departamentos",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/paises/{{$randomCountry}}/departamentos/{{$randomDepartment}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"paises",
+						"{{$randomCountry}}",
+						"departamentos",
+						"{{$randomDepartment}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "store país",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/paises",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"paises"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "store departamentos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/paises/{{$randomCountry}}/departamentos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"paises",
+						"{{$randomCountry}}",
+						"departamentos"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
